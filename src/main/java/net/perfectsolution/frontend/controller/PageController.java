@@ -45,7 +45,7 @@ public class PageController {
 		mv.addObject("contactMessage", nContactMessage);
 		
 		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("success", "success");
+			mv.addObject("success", "success");//
 		}
 		
 		return mv;
