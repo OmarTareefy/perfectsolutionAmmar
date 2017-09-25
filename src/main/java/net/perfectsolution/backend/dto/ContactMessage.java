@@ -1,5 +1,6 @@
 package net.perfectsolution.backend.dto;
 
+
 public class ContactMessage {
 
 	private String fullName;
@@ -44,8 +45,5 @@ public class ContactMessage {
 		return "ContactMessage [fullName=" + fullName + ", emailAddress=" + emailAddress + ", phone=" + phone
 				+ ", subject=" + subject + ", message=" + message + "]";
 	}
-	
-	
-	
 	
 }

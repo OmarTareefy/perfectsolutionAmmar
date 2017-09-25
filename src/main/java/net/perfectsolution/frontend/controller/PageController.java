@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.daoimpl.ContactMessageDAOImpl;
 import net.perfectsolution.backend.dto.ContactMessage;
 
 @Controller
@@ -22,6 +25,8 @@ public class PageController {
 	
 	@Autowired
 	ServiceDAO serviceDAO;
+	
+	ContactMessageDAO contactMessageDAO = new ContactMessageDAOImpl();
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -55,7 +60,8 @@ public class PageController {
 	public String handleContactMessageSubmission(@ModelAttribute("contactMessage") ContactMessage mContactMessage,
 			Model model, HttpServletRequest request) {
 
-		System.out.println(mContactMessage);
+		
+		System.out.println(contactMessageDAO.sendContactMessage(mContactMessage));
 
 		return "redirect:/contact/?operation=success";
 	}

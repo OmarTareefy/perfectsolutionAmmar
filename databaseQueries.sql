@@ -1,3 +1,6 @@
+CREATE DATABASE `perfectsolution` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+
 CREATE TABLE product_category (
 	id int NOT NULL AUTO_INCREMENT,
 	name_en NVARCHAR(50),
