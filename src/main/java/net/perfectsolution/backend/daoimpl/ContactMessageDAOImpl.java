@@ -1,5 +1,6 @@
 package net.perfectsolution.backend.daoimpl;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -9,6 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,41 +18,32 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.stereotype.Repository;
 
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dto.ContactMessage;
 
 @Configuration
-@ComponentScan(basePackages = "net.perfectsolution")
-@PropertySource(value="/WEB-INF/props/config.properties")
+@PropertySource("/WEB-INF/props/config.properties")
+@Repository("contactMessageDAO")
 public class ContactMessageDAOImpl implements ContactMessageDAO {
-
-	/*
-	private static String USER_NAME = "Mashagbawebsite"; // GMail user name
-	private static String PASSWORD = "mashagbawebsite2017"; // GMail password
-	private static String RECIPIENT = "omar.tareefy@hotmail.com";
-*/
-	@Value("${gmailSenderMailUsername}")
-	private static String USER_NAME; // GMail user name
-	@Value("${gmailSenderMailPassword}")
-	private static String PASSWORD; // GMail password
-	@Value("${recipientMailAddress")
-	private static String RECIPIENT;
+	
+	@Value("${gmailSenderMailUsername}") private String USER_NAME; // GMail user name
+	@Value("${gmailSenderMailPassword}") private String PASSWORD; // GMail password
+	@Value("${recipientMailAddress}") private String RECIPIENT;
 
 	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer(){
+	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
-	
-	@Override
-	public boolean sendContactMessage(ContactMessage contactMessage) {
 
+	@Override
+	public boolean sendContactMessage(ContactMessage contactMessage) {	
 		String from = USER_NAME;
 		String pass = PASSWORD;
-		String to = RECIPIENT; // list of recipient email addresses
+		String to = RECIPIENT;
 		String subject = "Java send mail example";
-		String body = "Welcome to JavaMail!";
-
+		String body = contactMessage.getMessage();
 		return sendFromGMail(from, pass, to, subject, body);
 	}
 
@@ -68,12 +61,14 @@ public class ContactMessageDAOImpl implements ContactMessageDAO {
 		MimeMessage message = new MimeMessage(session);
 
 		try {
+			System.out.println(message.getEncoding());
 			message.setFrom(new InternetAddress(from));
 			InternetAddress toAddress = new InternetAddress(to);
+			message.setContent("<h1> Omar </h1>", "text/html; charset=utf-8");
 			message.addRecipient(Message.RecipientType.TO, toAddress);
-			
-			message.setSubject(subject);
-			message.setText(body);
+			message.setSubject(subject, "UTF-8");
+			message.setText(body, "UTF-8");
+			//message.setContentLanguage(new String[]{"ar"});
 			Transport transport = session.getTransport("smtp");
 			transport.connect(host, from, pass);
 			transport.sendMessage(message, message.getAllRecipients());

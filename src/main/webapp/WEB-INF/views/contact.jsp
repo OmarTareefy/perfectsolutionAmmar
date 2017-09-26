@@ -26,21 +26,33 @@
 			<div class="col-md-8 col-sm-8">
 
 				<h3>
+				
 					<spring:message code="askQuestion"/>
 				</h3>
 					
-				<!-- Alert Success -->
-				<c:if test="${not empty success}">
-					<div class="alert alert-success alert-dismissible mb-30">
-						<button type="button" class="close" data-dismiss="alert"
-							>&times;</button>
-						<strong>Thank You!</strong> Your message successfully sent!
-					</div>
+				<!-- Alert-->
+				<c:if test="${not empty message}">
+					<!-- Success -->
+					<c:if test="${message == 'success'}">
+						<div class="alert alert-success alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert"
+								>&times;</button>
+							<strong><spring:message code="thankYou"/></strong> <spring:message code="successfullySent"/>
+						</div>
+					</c:if>
+					<c:if test="${message == 'failure'}">
+						<div class="alert alert-danger alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert"
+								>&times;</button>
+							<strong><spring:message code="sorry"/></strong> <spring:message code="issue"/>
+						</div>
+					</c:if>
+					
 				</c:if>
 				<!-- /Alert Success -->
 
 
-				<sf:form modelAttribute="contactMessage" action="${contextRoot}/contact"
+				<sf:form modelAttribute="contactMessage" action="${contextRoot}/contact" 
 					 method="post">
 					<fieldset>
 						<input type="hidden" name="action" value="contact_send" />

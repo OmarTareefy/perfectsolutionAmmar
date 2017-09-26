@@ -23,10 +23,14 @@ import net.perfectsolution.backend.dto.ContactMessage;
 @Controller
 public class PageController {
 	
+	//public static final String SUCCESS = "success";
+	//public static final String FAILURE = "failure";
+	
 	@Autowired
 	ServiceDAO serviceDAO;
 	
-	ContactMessageDAO contactMessageDAO = new ContactMessageDAOImpl();
+	@Autowired
+	ContactMessageDAO contactMessageDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -50,7 +54,7 @@ public class PageController {
 		mv.addObject("contactMessage", nContactMessage);
 		
 		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("success", "success");//
+			mv.addObject("message", operation);
 		}
 		
 		return mv;
@@ -59,11 +63,13 @@ public class PageController {
 	@RequestMapping(value = "/contact", method = RequestMethod.POST)
 	public String handleContactMessageSubmission(@ModelAttribute("contactMessage") ContactMessage mContactMessage,
 			Model model, HttpServletRequest request) {
-
 		
-		System.out.println(contactMessageDAO.sendContactMessage(mContactMessage));
-
-		return "redirect:/contact/?operation=success";
+		if(contactMessageDAO.sendContactMessage(mContactMessage)){
+			return "redirect:/contact/?operation=success";
+		}else{
+			return "redirect:/contact/?operation=failure";
+		}
+		
 	}
 
 

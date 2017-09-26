@@ -40,7 +40,7 @@
 
 
 								<c:forEach items="${services}" var="service">
-									<li><a href="${contextRoot}/show/service/${service.id}">${service.nameEn}</a></li>
+									<li><a href="${contextRoot}/show/service/${service.id}">${service.nameAr}</a></li>
 								</c:forEach>
 
 

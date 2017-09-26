@@ -23,6 +23,16 @@
 	<mvc:resources location="/assets/" mapping="/resources/**" />
 
 
+<bean id="properties"
+      class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+  <property name="locations">
+    <list>
+      <value>/WEB-INF/props/config.properties</value>
+    </list>
+  </property>
+</bean>
+
+
 <!--
 	<bean id="configProperties"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

@@ -54,8 +54,13 @@
 		rel="stylesheet" type="text/css" />
 </c:if>
 
+
+<link href="${res}/css/myapp.css"
+	rel="stylesheet" type="text/css" />
+
 </head>
-<body class="smoothscroll enable-animation">
+
+<body class="smoothscroll enable-animation <spring:message code='ifArabic'/>">
 
 
 	<!-- slidetop comes here-->

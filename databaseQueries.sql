@@ -48,5 +48,4 @@ CREATE TABLE service (
 	is_active BOOLEAN,
 	category_id INT,
 	CONSTRAINT pk_service_id PRIMARY KEY (id),
- 	CONSTRAINT fk_service_category_id FOREIGN KEY (category_id) REFERENCES service_category (id)
 );
