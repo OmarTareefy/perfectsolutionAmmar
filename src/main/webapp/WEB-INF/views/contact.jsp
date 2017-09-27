@@ -29,6 +29,7 @@
 				
 					<spring:message code="askQuestion"/>
 				</h3>
+				<hr />
 					
 				<!-- Alert-->
 				<c:if test="${not empty message}">
@@ -107,23 +108,7 @@
 			<!-- INFO -->
 			<div class="col-md-4 col-sm-4">
 
-				<h2>Visit Us</h2>
-
-				<!-- 
-							Available heights
-								h-100
-								h-150
-								h-200
-								h-250
-								h-300
-								h-350
-								h-400
-								h-450
-								h-500
-								h-550
-								h-600
-							-->
-
+				<h3><spring:message code="contact"/></h3>
 				<hr />
 
 				<p>
