@@ -1,13 +1,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd
    http://www.springframework.org/schema/mvc
-   http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+   http://www.springframework.org/schema/mvc/spring-mvc.xsd
+   http://www.springframework.org/schema/util 
+   http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<context:component-scan base-package="net.perfectsolution" />
 
@@ -21,24 +24,6 @@
 	<!-- Loading static resources (CSS and JS and Fonts etc..) -->
 	<mvc:annotation-driven />
 	<mvc:resources location="/assets/" mapping="/resources/**" />
-
-
-<bean id="properties"
-      class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-  <property name="locations">
-    <list>
-      <value>/WEB-INF/props/config.properties</value>
-    </list>
-  </property>
-</bean>
-
-
-<!--
-	<bean id="configProperties"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="/WEB-INF/props/config.properties"/>
-	</bean>
--->
 
 	<!-- Language -->
 	<bean id="messageSource"
@@ -57,4 +42,10 @@
 		</bean>
 	</mvc:interceptors>
 
+	<!-- This is for reading the config file from JSP -->
+	<util:properties id="propertyConfigurer"
+		location="/WEB-INF/props/config.properties" />
+	<context:property-placeholder
+		properties-ref="propertyConfigurer" />
+		
 </beans>

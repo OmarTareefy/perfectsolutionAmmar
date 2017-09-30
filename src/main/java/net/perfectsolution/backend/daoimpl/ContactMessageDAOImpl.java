@@ -1,5 +1,7 @@
 package net.perfectsolution.backend.daoimpl;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,13 +20,15 @@ public class ContactMessageDAOImpl implements ContactMessageDAO {
 	
 	@Value("${gmailSenderMailUsername}") private String USER_NAME; // GMail user name
 	@Value("${gmailSenderMailPassword}") private String PASSWORD; // GMail password
-	@Value("${recipientMailAddress}") private String RECIPIENT;
+	@Value("${companyMailAddress}") private String RECIPIENT;
 	@Value("${emailSubject}") private String SUBJECT;
 	
 	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+		BigInteger  b = new BigInteger("12312312312312312");
 		return new PropertySourcesPlaceholderConfigurer();
+		
 	}
 
 	@Override
