@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -72,5 +73,12 @@ public class PageController {
 		
 	}
 
-
+	@RequestMapping(value = "/service/{id}")
+	public ModelAndView service(@PathVariable("id") int id){
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Service");
+		mv.addObject("userClickService", true);
+		mv.addObject("service", serviceDAO.get(id));
+		return mv;
+	}
 }

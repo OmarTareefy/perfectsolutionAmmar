@@ -73,4 +73,18 @@ public class ServiceDAOImpl implements ServiceDAO {
 		}
 	}
 
+	@Override
+	public Service get(int serviceId) {
+		
+		Session session;
+
+		try {
+		    session = sessionFactory.getCurrentSession();
+		} catch (HibernateException e) {
+		    session = sessionFactory.openSession();
+		}
+
+		return session.get(Service.class, Integer.valueOf(serviceId));
+	}
+
 }
