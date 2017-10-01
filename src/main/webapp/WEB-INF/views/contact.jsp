@@ -123,7 +123,7 @@
 
 				<p>
 					<span class="block"><strong><i class="fa fa-phone"></i>
-							<spring:message code="phone"/>:</strong> <a href="tel:<spring:eval expression="@propertyConfigurer.getProperty('companyPhone')" />"><spring:eval expression="@propertyConfigurer.getProperty('companyPhone')" /></a></span> <span
+							<spring:message code="phone"/>:</strong> <a class="phoneDirection" href="tel:<spring:eval expression="@propertyConfigurer.getProperty('companyPhone')" />"><spring:eval expression="@propertyConfigurer.getProperty('companyPhone')" /></a></span> <span
 						class="block"><strong><i class="fa fa-envelope"></i>
 							<spring:message code="emailAddress" />:</strong> <a href="mailto:<spring:eval expression="@propertyConfigurer.getProperty('companyMailAddress')" />"><spring:eval expression="@propertyConfigurer.getProperty('companyMailAddress')" /></a></span>
 							

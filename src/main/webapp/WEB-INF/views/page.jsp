@@ -1,7 +1,7 @@
-<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>	
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <spring:url var="res" value="/resources" />
@@ -46,21 +46,27 @@
 <link href="${res}/plugins/slider.revolution/css/settings.css"
 	rel="stylesheet" type="text/css" />
 
+<c:choose>
+	<c:when test="${locale == 'ar'}">
+		<link href="${res}/css/layout-RTL.css" rel="stylesheet"
+			type="text/css" />
+		<link href="${res}/plugins/bootstrap/RTL/bootstrap-rtl-merged.min.css"
+			rel="stylesheet" type="text/css" />
 
-<c:if test="${locale == 'ar'}"> 
-	<link href="${res}/css/layout-RTL.css"
-		rel="stylesheet" type="text/css" />
-	<link href="${res}/plugins/bootstrap/RTL/bootstrap-rtl-merged.min.css"
-		rel="stylesheet" type="text/css" />
-</c:if>
+		<link href="${res}/css/myapp_rtl.css" rel="stylesheet" type="text/css" />
+
+	</c:when>
+	<c:otherwise>
+		<link href="${res}/css/myapp_ltr.css" rel="stylesheet" type="text/css" />
+	</c:otherwise>
+</c:choose>
 
 
-<link href="${res}/css/myapp.css"
-	rel="stylesheet" type="text/css" />
+<link href="${res}/css/myapp.css" rel="stylesheet" type="text/css" />
 
 </head>
 
-<body class="smoothscroll enable-animation <spring:message code='ifArabic'/>">
+<body class="smoothscroll enable-animation">
 
 
 	<!-- slidetop comes here-->
@@ -82,12 +88,17 @@
 		<c:if test="${userClickHome == true}">
 			<%@include file="home.jsp"%>
 		</c:if>
-		
+
 		<!-- Contact us comes here-->
 		<c:if test="${userClickContact == true}">
 			<%@include file="contact.jsp"%>
 		</c:if>
-		
+
+		<!-- Service comes here-->
+		<c:if test="${userClickService == true}">
+			<%@include file="service.jsp"%>
+		</c:if>
+
 
 
 
@@ -119,9 +130,6 @@
 
 	<script type="text/javascript" src="${res}/js/scripts.js"></script>
 
-	<!-- STYLESWITCHER - REMOVE -->
-	<script async type="text/javascript"
-		src="demo_files/styleswitcher/styleswitcher.js"></script>
 
 	<!-- REVOLUTION SLIDER -->
 	<script type="text/javascript"
@@ -130,8 +138,8 @@
 		src="${res}/plugins/slider.revolution/js/jquery.themepunch.revolution.min.js"></script>
 	<script type="text/javascript"
 		src="${res}/js/view/demo.revolution_slider.js"></script>
-		
-	<!-- self coded script -->	
+
+	<!-- self coded script -->
 	<script src="${res}/js/myapp.js"></script>
 </body>
 </html>

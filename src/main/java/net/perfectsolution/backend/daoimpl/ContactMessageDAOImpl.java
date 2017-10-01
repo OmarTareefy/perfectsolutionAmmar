@@ -26,9 +26,7 @@ public class ContactMessageDAOImpl implements ContactMessageDAO {
 	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-		BigInteger  b = new BigInteger("12312312312312312");
 		return new PropertySourcesPlaceholderConfigurer();
-		
 	}
 
 	@Override
