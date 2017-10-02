@@ -41,19 +41,19 @@
 					data-plugin-options='{"items": 1, "autoHeight": true, "navigation": true, "pagination": true, "transitionStyle":"backSlide", "progressBar":"true"}'>
 					<div>
 						<img class="img-fluid"
-							src="demo_files/images/mockups/800x553/18-min.jpg" alt="">
+							src="${res}/demo_files/images/mockups/800x553/18-min.jpg" alt="">
 					</div>
 					<div>
 						<img class="img-fluid"
-							src="demo_files/images/mockups/800x553/17-min.jpg" alt="">
+							src="${res}/demo_files/images/mockups/800x553/17-min.jpg" alt="">
 					</div>
 					<div>
 						<img class="img-fluid"
-							src="demo_files/images/mockups/800x553/3-min.jpg" alt="">
+							src="${res}/demo_files/images/mockups/800x553/3-min.jpg" alt="">
 					</div>
 					<div>
 						<img class="img-fluid"
-							src="demo_files/images/mockups/800x553/2-min.jpg" alt="">
+							src="${res}/demo_files/images/mockups/800x553/2-min.jpg" alt="">
 					</div>
 				</div>
 				<!-- /OWL SLIDER -->

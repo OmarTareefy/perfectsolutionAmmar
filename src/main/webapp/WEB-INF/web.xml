@@ -16,7 +16,7 @@
 	</servlet-mapping>
 	<filter>
 		<filter-name>encodingFilter</filter-name>
-		<filter-class>net.perfectsolution.frontend.controller.EncodingFilter</filter-class>
+		<filter-class>net.perfectsolution.frontend.filters.EncodingFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>

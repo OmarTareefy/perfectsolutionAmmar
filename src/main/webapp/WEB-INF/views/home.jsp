@@ -38,7 +38,7 @@
 				data-title="Slide title 1"
 				data-thumb="demo_files/images/150x99/27-min.jpg"><img
 				src="${res}/images/_smarty/1x1.png"
-				data-lazyload="demo_files/images/1200x800/7-min.jpg" alt=""
+				data-lazyload="${res}/demo_files/images/1200x800/7-min.jpg" alt=""
 				data-bgfit="cover" data-bgposition="center bottom"
 				data-bgrepeat="no-repeat" />
 
@@ -72,9 +72,9 @@
 			<li data-transition="random" data-slotamount="1"
 				data-masterspeed="1000" data-saveperformance="off"
 				data-title="Slide title 1"
-				data-thumb="demo_files/images/150x99/27-min.jpg"><img
+				data-thumb="${res}/demo_files/images/150x99/27-min.jpg"><img
 				src="${res}/images/_smarty/1x1.png"
-				data-lazyload="demo_files/images/1200x800/10-min.jpg" alt=""
+				data-lazyload="${res}/demo_files/images/1200x800/10-min.jpg" alt=""
 				data-bgfit="cover" data-bgposition="center bottom"
 				data-bgrepeat="no-repeat" />
 

@@ -32,15 +32,29 @@
 					<ul id="topMain" class="nav nav-pills nav-main">
 						<li><a href="${contextRoot}/?language=en"> English </a></li>
 						<li><a href="${contextRoot}/?language=ar"> Arabic </a></li>
-						<li><a href="${contextRoot}/home"> <spring:message code="home"/> </a></li>
+						<li><a href="${contextRoot}/home"> <spring:message
+									code="home" />
+						</a></li>
 
-						<li><a href="${contextRoot}/contact"> <spring:message code="contact"/> </a></li>
-						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message code="services"/></a>
+						<li><a href="${contextRoot}/contact"> <spring:message
+									code="contact" />
+						</a></li>
+						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
+									code="services" /></a>
 							<ul class="dropdown-menu">
 
 
 								<c:forEach items="${services}" var="service">
-									<li><a href="${contextRoot}/service/${service.id}">${service.nameAr}</a></li>
+									<li><a href="${contextRoot}/service/${service.id}">
+										<c:choose>
+											<c:when test="${locale == 'en'}">
+												${service.nameEn}
+											</c:when>
+											<c:otherwise>
+												${service.nameAr}
+											</c:otherwise>
+										</c:choose>
+									</a></li>
 								</c:forEach>
 
 

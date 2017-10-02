@@ -1,4 +1,4 @@
-package net.perfectsolution.frontend.controller;
+package net.perfectsolution.frontend.filters;
 
 import java.io.IOException;
 
