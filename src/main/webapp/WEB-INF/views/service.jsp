@@ -16,7 +16,24 @@
 </section>
 <!-- /PAGE HEADER -->
 
+<section class="page-header page-header-xlg parallax parallax-3"
+	style="background-image: url('${res}${about.topImgUrl}')">
+	<div class="overlay dark-5">
+		<!-- dark overlay [1 to 9 opacity] -->
+	</div>
+	
+	<div class="container">
+		<h1><spring:message code="about" /></h1>
 
+		<!-- breadcrumbs -->
+		<ol class="breadcrumb">
+			<li><a href="${contextRoot}/home"><spring:message code="home" /></a></li>
+			<li class="active"><spring:message code="about" /></li>
+		</ol>
+		<!-- /breadcrumbs -->
+
+	</div>
+</section>
 
 
 <!-- -->
