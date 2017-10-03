@@ -1,11 +1,12 @@
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
-<section class="page-header">
+<section class="page-header page-header-xlg parallax parallax-3"
+	style="background-image: url('${res}/myImages/contact/bubble-1.png')">
+	<div class="overlay dark-5">
+		<!-- dark overlay [1 to 9 opacity] -->
+	</div>
+	
 	<div class="container">
-
-		<h1>
-			<spring:message code="contact" />
-		</h1>
+		<h1><spring:message code="contact" /></h1>
 
 		<!-- breadcrumbs -->
 		<ol class="breadcrumb">
@@ -18,6 +19,7 @@
 	</div>
 </section>
 <!-- /PAGE HEADER -->
+
 
 <!-- -->
 <section>
