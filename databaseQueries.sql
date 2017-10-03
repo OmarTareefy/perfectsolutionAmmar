@@ -49,3 +49,17 @@ CREATE TABLE service (
 	category_id INT,
 	CONSTRAINT pk_service_id PRIMARY KEY (id),
 );
+
+CREATE TABLE about(
+	id int NOT NULL AUTO_INCREMENT,
+	description_en TEXT,
+    description_ar TEXT,
+    mission_en TEXT,
+	mission_ar TEXT,
+	vision_en TEXT,
+	vision_ar TEXT,
+	top_img_url NVARCHAR(128),
+	desc_img_url NVARCHAR(128),
+	CONSTRAINT pk_about_id PRIMARY KEY (id)
+);
+

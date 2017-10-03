@@ -42,11 +42,18 @@ public class ServiceDAOImpl implements ServiceDAO {
 	@Override
 	public List<Service> list() {
 
+		Session currentSession = null;
 		try {
-			return sessionFactory.getCurrentSession().createQuery("FROM Service", Service.class).getResultList();
+			currentSession = sessionFactory.getCurrentSession();
+			final Query<Service> query = currentSession.createQuery("FROM Service", Service.class);
+			return query.getResultList();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			return null;
+		} finally { 
+			if(currentSession != null ){
+				currentSession.close();
+			}
 		}
 	}
 
@@ -54,37 +61,53 @@ public class ServiceDAOImpl implements ServiceDAO {
 	public List<Service> listActiveServices() {
 
 		String selectActiveServices = "FROM Service WHERE isActive = :isActive";
-		
-		Session session;
 
+		Session session = null;
 		try {
-		    session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-		    session = sessionFactory.openSession();
-		}
-		
-		try {
-			Query query = session.createQuery(selectActiveServices, Service.class);
-			query.setParameter("isActive", true);
-			return query.getResultList();
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
+			try {
+				session = sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+				//TODO this output statement must be replaced with logger log statement with debug level.
+				System.out.println("No existing session.");
+			}
+			if (session == null) {
+				session = sessionFactory.openSession();
+			}
+			try {
+				Query query = session.createQuery(selectActiveServices, Service.class);
+				query.setParameter("isActive", true);
+				return query.getResultList();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				return null;
+			}
+		} finally {
+			if (session != null) {
+				session.close();
+			}
 		}
 	}
 
 	@Override
 	public Service get(int serviceId) {
-		
-		Session session;
 
+		Session session = null;
 		try {
-		    session = sessionFactory.getCurrentSession();
-		} catch (HibernateException e) {
-		    session = sessionFactory.openSession();
+			try {
+				session = sessionFactory.getCurrentSession();
+			} catch (HibernateException e) {
+				//TODO this output statement must be replaced with logger log statement with debug level.
+				System.out.println("No existing session.");
+			}
+			if (session == null) {
+				session = sessionFactory.openSession();
+			}
+			return session.get(Service.class, Integer.valueOf(serviceId));
+		} finally {
+			if (session != null) {
+				session.close();
+			}
 		}
-
-		return session.get(Service.class, Integer.valueOf(serviceId));
 	}
 
 }

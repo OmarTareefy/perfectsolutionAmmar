@@ -30,14 +30,17 @@
 			<div class="navbar-collapse collapse float-right nav-main-collapse">
 				<nav class="nav-main">
 					<ul id="topMain" class="nav nav-pills nav-main">
-						<li><a href="${contextRoot}/?language=en"> English </a></li>
-						<li><a href="${contextRoot}/?language=ar"> Arabic </a></li>
+						<li><a href="${currentLocation}?language=en"> English </a></li>
+						<li><a href="${currentLocation}?language=ar"> Arabic </a></li>
 						<li><a href="${contextRoot}/home"> <spring:message
 									code="home" />
 						</a></li>
 
 						<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact" />
+						</a></li>
+						<li><a href="${contextRoot}/about"> <spring:message
+									code="about" />
 						</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
 									code="services" /></a>

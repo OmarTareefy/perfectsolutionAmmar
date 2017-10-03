@@ -1,8 +1,10 @@
 package net.perfectsolution.backend.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
 
 public class ContactMessage {
 
+	@NotBlank(message="error!")
 	private String fullName;
 	private String emailAddress;
 	private String phone;

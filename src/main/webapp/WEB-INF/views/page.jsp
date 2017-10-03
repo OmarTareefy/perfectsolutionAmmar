@@ -6,8 +6,12 @@
 
 <spring:url var="res" value="/resources" />
 
+<c:set var="currentLocation" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <c:set var="locale" value="${pageContext.response.locale}" />
+<c:set var="valid" >
+this.setCustomValidity('<spring:message code="validationMessage" />')
+</c:set>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -78,8 +82,6 @@
 	<!-- wrapper -->
 	<div id="wrapper">
 
-
-
 		<!-- navbar comes here-->
 		<%@include file="./shared/navbar.jsp"%>
 
@@ -94,6 +96,11 @@
 			<%@include file="contact.jsp"%>
 		</c:if>
 
+		<!-- About us comes here-->
+		<c:if test="${userClickAbout == true}">
+			<%@include file="about.jsp"%>
+		</c:if>
+		
 		<!-- Service comes here-->
 		<c:if test="${userClickService == true}">
 			<%@include file="service.jsp"%>

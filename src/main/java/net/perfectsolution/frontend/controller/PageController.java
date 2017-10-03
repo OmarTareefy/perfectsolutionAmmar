@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import net.perfectsolution.backend.dao.AboutDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.ContactMessage;
@@ -25,6 +26,9 @@ public class PageController {
 	
 	@Autowired
 	ContactMessageDAO contactMessageDAO;
+	
+	@Autowired
+	AboutDAO aboutDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -64,6 +68,16 @@ public class PageController {
 		
 	}
 
+	@RequestMapping(value = "/about")
+	public ModelAndView about() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About Us");
+		mv.addObject("userClickAbout", true);
+		mv.addObject("about", aboutDAO.get(1));
+		return mv;
+	}
+
+	
 	@RequestMapping(value = "/service/{id}")
 	public ModelAndView service(@PathVariable("id") int id){
 		ModelAndView mv = new ModelAndView("page");

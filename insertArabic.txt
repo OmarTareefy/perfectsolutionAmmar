@@ -1,0 +1,36 @@
+insert into about(description_en, description_ar, mission_en, mission_ar, vision_en, vision_ar, top_img_url, desc_img_url)
+values('<p>We are a very <span style="font-weight: bold;">lovely </span>company, and we work on delivering the perfect solutions which lead in <span style="font-size: 18px;">growing</span> your company and make it standard with the ISO standards.</p>
+<p>However, if you would like to know more about us, please make sure to contact us <span style="font-style: italic;">as fast as possible.</span><br></p>',
+'تعمل مجموعة المناصير على تنمية وتطور البيئة 
+الاقتصادي و الصناعية في الأردن، وتلتزم المجموعة بالإستثمار في وضع خطط 
+العمل الناجحة وتطبيقها، بما يعطي قيمة نوعية مضافة بتشجيع الإستثمار في 
+الاردن
+
+<p dir="&quot;RTL&quot;">حيث أنها تمتلك خطط ثابتة للتوسع في أعمالها و 
+ترك بصمة مؤثر ة في السوق، وذلك من خلال الإلتزام بمعايير الجودة 
+والمصداقية في كافة المجالات. وقد ساهمت استثمارات مجموعة المناصير في 
+تطوير بيئة الأعمال و إيجاد فرص عمل مستدامة، بالإضافة الى تزويد السوق 
+بمهارات وتكنولوجيا جديدة و تعزيز ثقافة الإبداع، مما يعد من أبرز عوامل 
+تحفيز النمو الاقتصادي<span dir="&quot;LTR&quot;">.</span></p>
+
+
+رسالتنا نابعة من ايماننا العميق بالإلتزام نحو 
+مواطنينا و تأسيس مستقبل واعد للأجيال القادمة يجمع ما بين النوعية 
+والمعرفة والإزدهار. وتضم مجموعة المناصير اليوم أكثر من 18 شركة بالإضافة 
+لشراكة مع شركات رائدة في الأردن، ويعمل بها زهاء 10000 موظف في الأردن 
+بإستثمارات تصل الى 2 مليار دولار.<span style="font-style: italic;"></span>',
+'We are committed to provide great value to our customers, safe working 
+environment for our employees and outstanding returns for our 
+shareholders.',
+'أن نكون من الرواد &nbsp;في كافة القطاعات التي نعمل بها، استنادا لمبادئنا التي
+ تدفعنا لتحفيز النمو الاقتصادي و تطوير بناء المجتمع، فضلا عن تعزيز 
+السلامة البيئية للأجيال القادمة.',
+'To be the top player in each sector we are in, guided by our values, we 
+will lead the way to deliver economic prosperity, improve social 
+wellbeing and healthy environment for future generations',
+'تلتزم المجموعة بتوفير خدمات نوعية للزبائن و بيئة عمل آمنة للموظفين و عائد مجزي للشركاء.   
+
+ &nbsp;',
+ '/myImages/about/vision-min.jpg',
+ '/myImages/about/smart-min.jpg'
+ );

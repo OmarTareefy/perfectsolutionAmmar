@@ -67,12 +67,12 @@
 										code="fullName" /> *</label>
 								<sf:input type="text" required="true" class="form-control"
 									path="fullName" id="contact:name" />
+								
 							</div>
 							<div class="col-md-4">
 								<label for="contact:email"><spring:message
 										code="emailAddress" /> *</label>
-								<sf:input required="true" type="email" value=""
-									class="form-control" path="emailAddress" id="contact:email" />
+								<sf:input required="true" type="email" oninvalid="${validLocli}" value="" class="form-control" path="emailAddress" id="contact:email" />
 							</div>
 							<div class="col-md-4">
 								<label for="contact:phone"><spring:message code="phone" /></label>
