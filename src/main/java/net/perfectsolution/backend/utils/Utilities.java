@@ -1,5 +1,6 @@
 package net.perfectsolution.backend.utils;
 
+import java.util.Calendar;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -48,5 +49,15 @@ public class Utilities {
 		props.put("mail.smtp.password", pass);
 		props.put("mail.smtp.port", "587");
 		props.put("mail.smtp.auth", "true");
+	}
+	
+	public static Calendar getTodaysCalendar() {
+		
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+		return calendar;
 	}
 }
