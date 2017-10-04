@@ -110,6 +110,13 @@
 			<version>1.4</version>
 		</dependency>
 
+		<!-- JSON API consumer -->
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>

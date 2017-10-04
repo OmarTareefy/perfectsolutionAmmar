@@ -1,5 +1,4 @@
 $(function() {
-	
 	var $alert = $('.alert');
 	if ($alert.length) {
 		setTimeout(function() {
@@ -7,6 +6,4 @@ $(function() {
 		}, 8000)
 
 	}
-	
-	
 });
