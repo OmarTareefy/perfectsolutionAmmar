@@ -106,6 +106,11 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 			<%@include file="service.jsp"%>
 		</c:if>
 
+		<!-- error 404 comes here-->
+		<c:if test="${error404 == true}">
+			<%@include file="error404.jsp"%>
+		</c:if>
+
 
 
 

@@ -22,9 +22,10 @@ public class GlobalController {
 	public List getServices(){
 		return serviceDAO.listActiveServices();
 	}
-	
+
+	/*
 	@ModelAttribute("weatherDesc")
 	public String weatherDesc(){
 		return weatherProvider.getWeatherDesc();
-	}
+	}*/
 }
