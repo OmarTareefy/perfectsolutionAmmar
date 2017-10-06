@@ -12,16 +12,15 @@ CREATE TABLE product_category (
 	CONSTRAINT pk_category_id PRIMARY KEY (id) 
 );
 
-CREATE TABLE users (
+CREATE TABLE admin (
 	id int NOT NULL AUTO_INCREMENT,
-	first_name NVARCHAR(50),
-	last_name NVARCHAR(50),
-    user_name NVARCHAR(100),
-	password NVARCHAR(60),
-	role NVARCHAR(50),
-	enabled BOOLEAN,  
+	email VARCHAR(50),
+	role VARCHAR(50),
+	enabled BOOLEAN,
+	password VARCHAR(60),	
 	CONSTRAINT pk_user_id PRIMARY KEY(id)
 );
+insert into admin (email, role, enabled, password) values ('omar.tareefy@hotmail.com', 'ADMIN', true, 'admin')
 
 CREATE TABLE product (
 	id int NOT NULL AUTO_INCREMENT,
