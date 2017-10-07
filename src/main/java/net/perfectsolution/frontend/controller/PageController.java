@@ -30,6 +30,8 @@ public class PageController {
 	@Autowired
 	AboutDAO aboutDAO;
 	
+	
+	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
 		
@@ -39,6 +41,11 @@ public class PageController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/login")
+	public ModelAndView login(){
+		ModelAndView mv = new ModelAndView("login");
+		return mv;
+	}
 	
 	@RequestMapping(value = {"/contact"}, method = RequestMethod.GET)
 	public ModelAndView contact(@RequestParam(name = "operation", required = false) String operation){

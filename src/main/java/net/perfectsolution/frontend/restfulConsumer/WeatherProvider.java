@@ -20,6 +20,7 @@ public class WeatherProvider {
 	private static Map<String, Object> todayForecast;
 	private Date lastUpdatedDate;
 
+	/*
 	public String getWeatherDesc(){
 		WeatherProvider w = new WeatherProvider();
 		
@@ -31,9 +32,9 @@ public class WeatherProvider {
 		
 		return description;
 		
-	}
+	}*/
 	
-	private Map<String, Object> getTodayWeather() {
+	public Map<String, Object> getTodayWeather() {
 		if (todayForecast == null || todayForecast.isEmpty() || shouldUpdate()) {
 			try {
 				updateWeatherForecast();
