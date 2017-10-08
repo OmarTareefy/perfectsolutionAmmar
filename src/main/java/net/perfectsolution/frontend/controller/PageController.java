@@ -35,7 +35,7 @@ public class PageController {
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
 		
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Home");		
 		mv.addObject("userClickHome", true);
 		return mv;
@@ -43,13 +43,13 @@ public class PageController {
 
 	@RequestMapping(value = "/login")
 	public ModelAndView login(){
-		ModelAndView mv = new ModelAndView("login");
+		ModelAndView mv = new ModelAndView("/adminViews/login");
 		return mv;
 	}
 	
 	@RequestMapping(value = {"/contact"}, method = RequestMethod.GET)
 	public ModelAndView contact(@RequestParam(name = "operation", required = false) String operation){
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Contact Us");
 		mv.addObject("userClickContact", true);
 		
@@ -77,7 +77,7 @@ public class PageController {
 
 	@RequestMapping(value = "/about")
 	public ModelAndView about() {
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "About Us");
 		mv.addObject("userClickAbout", true);
 		mv.addObject("about", aboutDAO.get(1));
@@ -87,7 +87,7 @@ public class PageController {
 	
 	@RequestMapping(value = "/service/{id}")
 	public ModelAndView service(@PathVariable("id") int id){
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Service");
 		mv.addObject("userClickService", true);
 		mv.addObject("service", serviceDAO.get(id));

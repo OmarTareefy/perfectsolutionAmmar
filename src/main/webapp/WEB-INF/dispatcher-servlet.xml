@@ -25,6 +25,7 @@
 	<!-- Loading static resources (CSS and JS and Fonts etc..) -->
 	<mvc:annotation-driven />
 	<mvc:resources location="/assets/" mapping="/resources/**" />
+	<mvc:resources location="/adminAssets/" mapping="/adminResources/**" />
 
 	<!-- Language -->
 	<bean id="messageSource"
