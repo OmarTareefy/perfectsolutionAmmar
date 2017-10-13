@@ -12,20 +12,42 @@
 
 			<div class="panel-body">
 
-				<sf:form class="validate" modelAttribute="about"
-					action="${contextRoot}/contact" method="post"
+
+				<!-- Alert-->
+				<c:if test="${not empty message}">
+					<!-- Success -->
+					<c:if test="${message == 'success'}">
+						<div class="alert alert-success alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Thank you! About page has been updated successfully.</strong>
+							<spring:message code="successfullySent" />
+						</div>
+					</c:if>
+					<c:if test="${message == 'failure'}">
+						<div class="alert alert-danger alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>There was an issue updating About page.</strong>
+							<spring:message code="issue" />
+						</div>
+					</c:if>
+
+				</c:if>
+				<!-- /Alert Success -->
+
+				<sf:form modelAttribute="about"
+					action="${contextRoot}/manage/about/" method="post"
 					enctype="multipart/form-data" data-success="Sent! Thank you!"
 					data-toastr-position="top-right">
 					<fieldset>
-						<!-- required [php action request] -->
-						<input type="hidden" name="action" value="contact_send" />
+						
 
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Description En</label>
-									<textarea name="contact[experience]" rows="4"
-										class="summernote form-control required" path="descriptionEn"></textarea>
+									<label>Description En*</label>
+									<sf:textarea path="descriptionEn" rows="4"
+										class="summernote form-control"></sf:textarea>
+									<sf:errors path="descriptionEn" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
@@ -33,9 +55,10 @@
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Description Ar</label>
-									<textarea name="contact[experience2]" rows="4"
-										class="summernote form-control required" path="descriptionAr"></textarea>
+									<label>Description Ar*</label>
+									<sf:textarea path="descriptionAr" rows="4"
+										class="summernote form-control"></sf:textarea>
+									<sf:errors path="descriptionAr" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
@@ -43,9 +66,10 @@
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Mission En</label>
-									<textarea name="contact[experience2]" rows="4"
-										class="summernote form-control required" path="missionEn"></textarea>
+									<label>Mission En*</label>
+									<sf:textarea path="missionEn" rows="4"
+										class="summernote form-control"></sf:textarea>
+									<sf:errors path="missionEn" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
@@ -53,9 +77,10 @@
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Mission Ar</label>
-									<textarea name="contact[experience2]" rows="4"
-										class="summernote form-control required" path="missionAr"></textarea>
+									<label>Mission Ar*</label>
+									<sf:textarea path="missionAr" rows="4"
+										class="summernote form-control"></sf:textarea>
+									<sf:errors path="missionAr" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
@@ -63,9 +88,10 @@
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Vision En</label>
-									<textarea name="contact[experience2]" rows="4"
-										class="summernote form-control required" path="visionEn"></textarea>
+									<label>Vision En*</label>
+									<sf:textarea path="visionEn" rows="4"
+										class="summernote form-control" ></sf:textarea>
+									<sf:errors path="visionEn" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
@@ -73,13 +99,14 @@
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
-									<label>Vision Ar</label>
-									<textarea name="contact[experience2]" rows="4"
-										class="summernote form-control required" path="visionAr"></textarea>
+									<label>Vision Ar*</label>
+									<sf:textarea path="visionAr" rows="4"
+										class="summernote form-control" ></sf:textarea>
+									<sf:errors path="visionAr" cssClass="help-block" element="em" />
 								</div>
 							</div>
 						</div>
-
+<!-- 
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12">
@@ -87,7 +114,7 @@
 											Vitae - optional</small>
 									</label>
 
-									<!-- custom file upload -->
+									
 									<div class="fancy-file-upload fancy-file-primary">
 										<i class="fa fa-upload"></i> <input type="file"
 											class="form-control" name="contact[attachment]"
@@ -102,19 +129,18 @@
 								</div>
 							</div>
 						</div>
-
+ -->
 					</fieldset>
 
 					<div class="row">
 						<div class="col-md-12">
 							<button type="submit"
 								class="btn btn-3d btn-teal btn-xlg btn-block margin-top-30">
-								SEND APPLICATION <span class="block font-lato">We'll get
-									back to you within 48 hours</span>
+								Submit
 							</button>
 						</div>
 					</div>
-
+			
 				</sf:form>
 
 			</div>

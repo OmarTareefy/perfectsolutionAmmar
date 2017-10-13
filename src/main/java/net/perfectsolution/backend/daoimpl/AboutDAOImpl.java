@@ -41,4 +41,30 @@ public class AboutDAOImpl implements AboutDAO {
 		}
 	}
 
+	@Override
+	public boolean updateAbout(About about) {
+		Session session = null;
+		try{
+			try{
+				session = sessionFactory.getCurrentSession();
+			}catch(Exception ex){
+				System.out.println("No existing session.");
+			}
+			if (session == null) {
+				session = sessionFactory.openSession();
+			}
+			sessionFactory.getCurrentSession().update(about);
+			return true;
+		}catch(Exception ex){
+			return false;
+		} finally{
+			if (session != null) {
+				session.close();
+			}
+		}
+		
+	}
+	
+	
+
 }

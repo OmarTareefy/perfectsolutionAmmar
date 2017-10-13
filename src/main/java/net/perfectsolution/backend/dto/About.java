@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class About {
 
@@ -13,18 +15,27 @@ public class About {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@NotBlank(message = "Please enter the Description")
 	@Column(name = "description_en")
 	private String descriptionEn;
+	
+	@NotBlank(message = "Please enter the Description")
 	@Column(name = "description_ar")
 	private String descriptionAr;
 	
+	@NotBlank(message = "Please enter the Mission")
 	@Column(name = "mission_en")
 	private String missionEn;
+	
+	@NotBlank(message = "Please enter the Mission")
 	@Column(name = "mission_ar")
 	private String missionAr;
 	
+	@NotBlank(message = "Please enter the Vision")
 	@Column(name = "vision_en")
 	private String visionEn;
+	
+	@NotBlank(message = "Please enter the Vision")
 	@Column(name = "vision_ar")
 	private String visionAr;
 	
