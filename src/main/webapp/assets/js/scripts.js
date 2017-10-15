@@ -43,7 +43,7 @@
 	/* Init */
 	jQuery(window).ready(function () {
 
-
+		
 		// jQuery 3.x do no support size() - should be replaceced with .legth
 		// We use this hack to make old plugins working
 		jQuery.fn.extend({
