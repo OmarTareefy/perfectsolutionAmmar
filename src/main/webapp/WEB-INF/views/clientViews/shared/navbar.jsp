@@ -19,7 +19,7 @@
 
 			<!-- Logo -->
 			<a class="logo float-left" href="${contextRoot}/home"> <img
-				src="${res}/images/_smarty/logo_dark.png" alt="" />
+				src="${res}/myImages/shared/logo.png" alt="" />
 			</a>
 
 			<!-- 

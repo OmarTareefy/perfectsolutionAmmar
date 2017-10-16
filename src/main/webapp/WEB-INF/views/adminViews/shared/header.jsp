@@ -7,7 +7,7 @@
 
 	<!-- Logo -->
 	<span class="logo pull-left"> <img
-		src="${res}/images/logo_light.png" alt="admin panel" height="35" />
+		src="${res}/myImages/logo.jpg" alt="admin panel" height="35" />
 	</span>
 	<nav>
 

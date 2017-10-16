@@ -12,7 +12,7 @@ public class GlobalDefaultExceptionHandler {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ModelAndView handlerNoHandlerFoundException() {
 		
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("/clientViews/page");
 		
 		mv.addObject("title","404 Error Page");
 		mv.addObject("error404", true);
