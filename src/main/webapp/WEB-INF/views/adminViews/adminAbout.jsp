@@ -35,8 +35,8 @@
 				<!-- /Alert Success -->
 
 				<sf:form modelAttribute="about"
-					action="${contextRoot}/manage/about/" method="post"
-					enctype="multipart/form-data" data-success="Sent! Thank you!"
+					action="${contextRoot}/manage/about/" method="POST"
+					data-success="Sent! Thank you!"
 					data-toastr-position="top-right">
 					<fieldset>
 						

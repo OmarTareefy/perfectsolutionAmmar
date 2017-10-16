@@ -5,6 +5,7 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <spring:url var="res" value="/resources" />
+<spring:url var="sharedRes" value="/sharedResources" />
 
 <c:set var="currentLocation" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
@@ -66,7 +67,7 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 </c:choose>
 
 
-<link href="${res}/css/myapp.css" rel="stylesheet" type="text/css" />
+<link href="${sharedRes}/css/myapp.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -152,6 +153,6 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 		src="${res}/js/view/demo.revolution_slider.js"></script>
 
 	<!-- self coded script -->
-	<script src="${res}/js/myapp.js"></script>
+	<script src="${sharedRes}/js/myapp.js"></script>
 </body>
 </html>

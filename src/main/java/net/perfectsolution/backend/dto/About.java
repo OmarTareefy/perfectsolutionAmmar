@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 import org.hibernate.validator.constraints.NotBlank;
 
+
 @Entity
 public class About {
 
@@ -39,12 +40,13 @@ public class About {
 	@Column(name = "vision_ar")
 	private String visionAr;
 	
+	/*
 	@Column(name = "top_img_url")
 	private String topImgUrl;
 	
 	@Column(name = "desc_img_url")
 	private String descImgUrl;
-
+	 */
 	
 	public int getId() {
 		return id;
@@ -115,7 +117,14 @@ public class About {
 		this.visionAr = visionAr;
 	}
 
-	
+
+	@Override
+	public String toString() {
+		return "About [id=" + id + ", descriptionEn=" + descriptionEn + ", descriptionAr=" + descriptionAr + ", missionEn=" + missionEn + ", missionAr=" + missionAr + ", visionEn=" + visionEn + ", visionAr=" + visionAr
+				+ "]";
+	}
+
+	/*
 	public String getTopImgUrl() {
 		return topImgUrl;
 	}
@@ -134,13 +143,8 @@ public class About {
 	public void setDescImgUrl(String descImgUrl) {
 		this.descImgUrl = descImgUrl;
 	}
+*/
 
-
-	@Override
-	public String toString() {
-		return "about [id=" + id + ", descriptionEn=" + descriptionEn + ", descriptionAr=" + descriptionAr + ", missionEn=" + missionEn + ", missionAr=" + missionAr + ", visionEn=" + visionEn + ", visionAr=" + visionAr
-				+ ", topImgUrl=" + topImgUrl + ", descImgUrl=" + descImgUrl + "]";
-	}
 	
 	
 }
