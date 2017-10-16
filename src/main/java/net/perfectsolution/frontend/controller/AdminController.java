@@ -57,7 +57,7 @@ public class AdminController {
 			model.addAttribute("userClickAdminAbout", true);
 			return "/adminViews/adminPage";
 		}
-		
+		mAbout.setId(1);
 		if(aboutDAO.updateAbout(mAbout)){
 			return "redirect:/manage/about?operation=success";
 		}else{

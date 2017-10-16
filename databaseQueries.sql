@@ -61,4 +61,6 @@ CREATE TABLE about(
 	desc_img_url NVARCHAR(128),
 	CONSTRAINT pk_about_id PRIMARY KEY (id)
 );
+alter table about drop column desc_img_url
+alter table about drop column top_img_url
 
