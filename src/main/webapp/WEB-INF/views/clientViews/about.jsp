@@ -1,6 +1,6 @@
 
 <section class="page-header page-header-xlg parallax parallax-3"
-	style="background-image: url('${res}${about.topImgUrl}')">
+	style="background-image: url('${res}/myImages/about/aboutCover.jpg')">
 	<div class="overlay dark-5">
 		<!-- dark overlay [1 to 9 opacity] -->
 	</div>
@@ -28,7 +28,7 @@
 
 			<div class=" col-md-10 offset-md-1">
 
-				<img class="float-left" src="${res}${about.descImgUrl}" alt="" />
+				<img class="float-left" src="${res}/myImages/about/smart-min.png" alt="" />
 
 				<div class="heading-title">
 					<h2><spring:message code="whoWeAre" /></h2>

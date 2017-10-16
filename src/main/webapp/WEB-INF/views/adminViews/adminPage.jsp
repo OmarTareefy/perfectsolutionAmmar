@@ -5,6 +5,7 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <spring:url var="res" value="/adminResources" />
+<spring:url var="sharedRes" value="/sharedResources" />
 
 <c:set var="currentLocation"
 	value="${requestScope['javax.servlet.forward.request_uri']}" />
@@ -37,6 +38,7 @@
 <link href="${res}/css/layout.css" rel="stylesheet" type="text/css" />
 <link href="${res}/css/color_scheme/green.css" rel="stylesheet"
 	type="text/css" id="color_scheme" />
+<link href="${sharedRes}/css/myapp.css" rel="stylesheet" type="text/css" />
 
 </head>
 <!--
@@ -56,7 +58,7 @@
 
 		<!-- MIDDLE -->
 		<section id="middle">
-	
+
 			<!-- page title -->
 			<header id="page-header">
 				<h1>${title}</h1>
@@ -80,7 +82,7 @@
 				<c:if test="${userClickAdminAbout == true}">
 					<%@include file="adminAbout.jsp"%>
 				</c:if>
-				
+
 			</div>
 		</section>
 		<!-- /MIDDLE -->
@@ -94,6 +96,8 @@
 	<script type="text/javascript"
 		src="${res}/plugins/jquery/jquery-2.2.3.min.js"></script>
 	<script type="text/javascript" src="${res}/js/app.js"></script>
-
+	<script type="text/javascript"
+		src="${sharedRes}/plugins/jquery/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="${res}/js/myapp.js"></script>
 </body>
 </html>
