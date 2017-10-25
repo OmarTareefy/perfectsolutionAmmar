@@ -6,9 +6,9 @@
 	<button id="mobileMenuBtn"></button>
 
 	<!-- Logo -->
-	<span class="logo pull-left"> <img
-		src="${res}/myImages/logo.jpg" alt="admin panel" height="35" />
-	</span>
+	<a class="logo pull-left" href="${contextRoot}/home"> <img
+		src="${res}/myImages/CompanyLogo1.png" alt="admin panel" height="35" />
+	</a>
 	<nav>
 
 		<!-- OPTIONS LIST -->

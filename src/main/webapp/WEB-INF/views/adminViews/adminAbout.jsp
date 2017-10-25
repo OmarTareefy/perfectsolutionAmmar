@@ -20,14 +20,12 @@
 						<div class="alert alert-success alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
 							<strong>Thank you! About page has been updated successfully.</strong>
-							<spring:message code="successfullySent" />
 						</div>
 					</c:if>
 					<c:if test="${message == 'failure'}">
 						<div class="alert alert-danger alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
 							<strong>There was an issue updating About page.</strong>
-							<spring:message code="issue" />
 						</div>
 					</c:if>
 

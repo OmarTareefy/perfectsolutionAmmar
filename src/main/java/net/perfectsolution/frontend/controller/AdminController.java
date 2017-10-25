@@ -37,8 +37,8 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "About");		
 		mv.addObject("userClickAdminAbout", true);
-		About nAbout = new About();
-		mv.addObject("about", nAbout);
+		About about = aboutDAO.get(1);
+		mv.addObject("about", about);
 		
 		if(operation!=null && !operation.isEmpty()){
 			mv.addObject("message", operation);
