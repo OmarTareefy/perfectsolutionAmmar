@@ -83,6 +83,11 @@
 					<%@include file="adminAbout.jsp"%>
 				</c:if>
 
+				<!-- services comes here-->
+				<c:if test="${userClickAdminServices == true}">
+					<%@include file="adminServices.jsp"%>
+				</c:if>
+
 			</div>
 		</section>
 		<!-- /MIDDLE -->

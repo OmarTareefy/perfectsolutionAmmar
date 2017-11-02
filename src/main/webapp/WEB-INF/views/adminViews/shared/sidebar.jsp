@@ -20,15 +20,19 @@
 		<ul class="nav nav-list">
 			<li class="active">
 				<!-- dashboard --> <a class="dashboard" href="index.html">
-					<!-- warning - url used by default by ajax (if eneabled) --> <i
-					class="main-icon fa fa-dashboard"></i> <span>Dashboard</span>
+					<i class="main-icon fa fa-dashboard"></i> <span>Dashboard</span>
 			</a>
 			</li>
 			<li>
 				<!-- About us --> <a href="${contextRoot}/manage/about">
-					<!-- warning - url used by default by ajax (if eneabled) --> <i
-					class="main-icon fa fa-info-circle"></i> <span>About Us</span>
+					<i class="main-icon fa fa-info-circle"></i> <span>About Us</span>
 			</a>
+			</li>
+			<li>
+				<!-- Services --> 
+				<a href="${contextRoot}/manage/services">
+					<i class="main-icon fa fa-cube"></i> <span>Services</span>
+				</a>
 			</li>
 		</ul>
 
