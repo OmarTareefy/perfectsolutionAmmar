@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
 import net.perfectsolution.backend.dto.About;
+import net.perfectsolution.backend.dto.Service;
 
 @Controller
 @RequestMapping("/manage")
@@ -66,5 +67,19 @@ public class AdminController {
 		
 	}
 
+	@RequestMapping(value = {"/services"}, method = RequestMethod.GET)
+	public ModelAndView services(@RequestParam(name = "operation", required = false) String operation){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Services");
+		mv.addObject("userClickAdminServices", true);
+		mv.addObject("service", new Service());
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
+		return mv;
+	}
 	
 }

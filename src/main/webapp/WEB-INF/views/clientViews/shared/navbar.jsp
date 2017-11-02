@@ -66,12 +66,19 @@
 
 						</ul></li>
 
+		
+							<li><a href="${contextRoot}/manage/home"> <spring:message
+								code="manage" />
+							</a></li>
+		
+				
+<!-- 
 						<security:authorize access="hasAuthority('ADMIN')">
 							<li><a href="${contextRoot}/manage/home"> <spring:message
 								code="manage" />
 							</a></li>
 						</security:authorize>
-						 
+	 -->					 
 
 					<!-- 
 										MENU ANIMATIONS

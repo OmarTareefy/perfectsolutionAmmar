@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Service {
 
@@ -18,12 +20,16 @@ public class Service {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@NotBlank(message = "Please enter the Name")
 	@Column(name = "name_en")
 	private String nameEn;
+	@NotBlank(message = "Please enter the Name")
 	@Column(name = "name_ar")
 	private String nameAr;
+	@NotBlank(message = "Please enter the Description")
 	@Column(name = "description_en")
 	private String descriptionEn;
+	@NotBlank(message = "Please enter the Description")
 	@Column(name = "description_ar")
 	private String descriptionAr;
 	private String code;
