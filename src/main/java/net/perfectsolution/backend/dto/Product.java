@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Service {
+public class Product {
 
 	/*
 	 *Private fields 
@@ -41,7 +41,7 @@ public class Service {
 	private MultipartFile file;
 	
 	
-	public Service(){
+	public Product(){
 		//defualt constructor
 		this.code = "SER" + UUID.randomUUID().toString().substring(26).toUpperCase();
 	}

@@ -7,7 +7,7 @@
 		<!-- ------ -->
 		<div class="panel panel-default">
 			<div class="panel-heading panel-heading-transparent">
-				<strong>Manage About Us</strong>
+				<strong>Manage Products</strong>
 			</div>
 
 			<div class="panel-body">
@@ -19,21 +19,22 @@
 					<c:if test="${message == 'success'}">
 						<div class="alert alert-success alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>Thank you! About page has been updated successfully.</strong>
+							<strong>Thank you! A Product has been added successfully.</strong>
 						</div>
 					</c:if>
 					<c:if test="${message == 'failure'}">
 						<div class="alert alert-danger alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>There was an issue updating About page.</strong>
+							<strong>There was an issue adding a product.</strong>
 						</div>
 					</c:if>
 
 				</c:if>
 				<!-- /Alert Success -->
 
-				<sf:form modelAttribute="service"
-					action="${contextRoot}/manage/services/" method="POST"
+				<sf:form modelAttribute="product"
+					action="${contextRoot}/manage/product/" method="POST"
+					enctype="multipart/form-data"
 					data-success="Sent! Thank you!"
 					data-toastr-position="top-right">
 					<fieldset>
@@ -82,6 +83,18 @@
 								</div>
 							</div>
 						</div>
+						
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Select an Image*</label>
+										<sf:input type="file" path="file" id="file" class="form-control" />
+										<sf:errors path="file" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+						
 
 					</fieldset>
 
@@ -94,9 +107,10 @@
 						</div>
 					</div>
 					<!-- Hidden fields for Service -->
+					<sf:hidden path="active" />
 					<sf:hidden path="id" />
 					<sf:hidden path="code" />
-					<sf:hidden path="isActive" />			
+					
 				</sf:form>
 
 			</div>

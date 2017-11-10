@@ -16,9 +16,13 @@
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-<title>Smarty Admin</title>
+<title>${title}</title>
 <meta name="description" content="" />
 <meta name="Author" content="Dorin Grigoras [www.stepofweb.com]" />
+
+<script>
+	window.menu = '${title}';
+</script>
 
 <!-- mobile settings -->
 <meta name="viewport"
@@ -84,8 +88,13 @@
 				</c:if>
 
 				<!-- services comes here-->
-				<c:if test="${userClickAdminServices == true}">
-					<%@include file="adminServices.jsp"%>
+				<c:if test="${userClickAdminService == true}">
+					<%@include file="adminService.jsp"%>
+				</c:if>
+				
+				<!-- products comes here-->
+				<c:if test="${userClickAdminProduct == true}">
+					<%@include file="adminProduct.jsp"%>
 				</c:if>
 
 			</div>
@@ -103,6 +112,6 @@
 	<script type="text/javascript" src="${res}/js/app.js"></script>
 	<script type="text/javascript"
 		src="${sharedRes}/plugins/jquery/jquery-2.2.3.min.js"></script>
-	<script type="text/javascript" src="${res}/js/myapp.js"></script>
+	<script type="text/javascript" src="${sharedRes}/js/myapp.js"></script>
 </body>
 </html>

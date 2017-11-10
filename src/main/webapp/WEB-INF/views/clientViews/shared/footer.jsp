@@ -28,10 +28,11 @@
 				<!-- /Contact Address -->
 
 			</div>
-
+<!-- 
 			<div class="col-md-3">
 
-				<!-- Latest Blog Post -->
+				
+				
 				<h4 class="letter-spacing-1">LATEST NEWS</h4>
 				<ul class="footer-posts list-unstyled">
 					<li><a href="#">Donec sed odio dui. Nulla vitae elit
@@ -41,22 +42,31 @@
 					<li><a href="#">Duis mollis, est non commodo luctus</a> <small>29
 							June 2017</small></li>
 				</ul>
-				<!-- /Latest Blog Post -->
+				
+				
 
 			</div>
-
+ -->
 			<div class="col-md-2">
 
 				<!-- Links -->
-				<h4 class="letter-spacing-1">EXPLORE SMARTY</h4>
+				<h4 class="letter-spacing-1"><spring:message
+									code="explore" /></h4>
 				<ul class="footer-links list-unstyled">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Our Services</a></li>
-					<li><a href="#">Our Clients</a></li>
-					<li><a href="#">Our Pricing</a></li>
-					<li><a href="#">Smarty Tour</a></li>
-					<li><a href="#">Contact Us</a></li>
+					<li><a href="${contextRoot}/home"> <spring:message
+									code="home" />
+					</a></li>
+					<li><a href="${contextRoot}/contact"> <spring:message
+									code="contact" />
+						</a></li>
+						<li><a href="${contextRoot}/about"> <spring:message
+									code="about" />
+						</a></li>
+					<li><a href="#"><spring:message
+									code="services" /></a></li>
+					<li><a href="#"><spring:message
+									code="products" /></a></li>
+					
 				</ul>
 				<!-- /Links -->
 
@@ -65,9 +75,10 @@
 			<div class="col-md-4">
 
 				<!-- Newsletter Form -->
-				<h4 class="letter-spacing-1">KEEP IN TOUCH</h4>
-				<p>Subscribe to Our Newsletter to get Important News &amp;
-					Offers</p>
+				<h4 class="letter-spacing-1"><spring:message
+									code="keep" /></h4>
+				<p><spring:message
+									code="subscribeToOurNews" /></p>
 
 				<form class="validate" action="php/newsletter.php" method="post"
 					data-success="Subscribed! Thank you!"
@@ -75,9 +86,11 @@
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 						<input type="email" id="email" name="email"
-							class="form-control required" placeholder="Enter your Email">
+							class="form-control required" placeholder="<spring:message
+									code="enterEmail" />">
 						<span class="input-group-btn">
-							<button class="btn btn-success" type="submit">Subscribe</button>
+							<button class="btn btn-success" type="submit"><spring:message
+									code="subscribe" /></button>
 						</span>
 					</div>
 				</form>

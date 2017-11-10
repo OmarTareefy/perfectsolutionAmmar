@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.frontend.restfulConsumer.WeatherProvider;
 
@@ -16,11 +17,19 @@ public class GlobalController {
 	ServiceDAO serviceDAO;
 	
 	@Autowired
+	ProductDAO productDAO;
+	
+	@Autowired
 	WeatherProvider weatherProvider;
 	
 	@ModelAttribute("services")
 	public List getServices(){
 		return serviceDAO.listActiveServices();
+	}
+	
+	@ModelAttribute("products")
+	public List getProducts(){
+		return productDAO.listActiveProducts();
 	}
 
 	/*
