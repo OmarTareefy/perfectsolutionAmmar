@@ -27,8 +27,6 @@ CREATE TABLE product (
 	code NVARCHAR(20),
 	name_en NVARCHAR(50),
     name_ar NVARCHAR(50),
-	brand_en NVARCHAR(50),
-    brand_ar NVARCHAR(50),
 	description_en TEXT,
     description_ar TEXT,
 	is_active BOOLEAN,

@@ -66,6 +66,28 @@
 
 						</ul></li>
 
+						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
+									code="products" /></a>
+							<ul class="dropdown-menu">
+
+
+								<c:forEach items="${products}" var="product">
+									<li><a href="${contextRoot}/product/${product.id}">
+										<c:choose>
+											<c:when test="${locale == 'en'}">
+												${product.nameEn}
+											</c:when>
+											<c:otherwise>
+												${product.nameAr}
+											</c:otherwise>
+										</c:choose>
+									</a></li>
+								</c:forEach>
+
+
+
+						</ul></li>
+
 		
 							<li><a href="${contextRoot}/manage/home"> <spring:message
 								code="manage" />

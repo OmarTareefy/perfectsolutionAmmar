@@ -22,6 +22,11 @@
 	</bean>
 
 
+	<!-- id must be multipartResolver for uploading files -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
+
+
 	<!-- Loading static resources (CSS and JS and Fonts etc..) -->
 	<mvc:annotation-driven />
 	<mvc:resources location="/commonAssets/assets/" mapping="/resources/**" />

@@ -8,20 +8,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.perfectsolution.backend.dao.ServiceDAO;
-import net.perfectsolution.backend.dto.Service;
+import net.perfectsolution.backend.dao.ProductDAO;
+import net.perfectsolution.backend.dto.Product;
 
 @Transactional
-@Repository("serviceDAO")
-public class ServiceDAOImpl implements ServiceDAO {
+@Repository("productDAO")
+public class ProductDAOImpl implements ProductDAO{
 
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	
+	@Override
+	public Product get(int id) {
+		return sessionFactory.getCurrentSession()
+				.get(Product.class, Integer.valueOf(id));
+	}
 
 	@Override
-	public boolean add(Service service) {
+	public boolean add(Product product) {
 		try{
-			sessionFactory.getCurrentSession().persist(service);
+			sessionFactory.getCurrentSession().persist(product);
 			return true;
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -30,43 +38,33 @@ public class ServiceDAOImpl implements ServiceDAO {
 	}
 
 	@Override
-	public boolean update(Service service) {
+	public boolean update(Product product) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean delete(Service service) {
+	public boolean delete(Product product) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public List<Service> list() {
-
-		
+	public List<Product> list() {
 		return sessionFactory
 				.getCurrentSession()
-					.createQuery("FROM Service",Service.class)
+					.createQuery("FROM Product",Product.class)
 						.getResultList();
 	}
 
 	@Override
-	public List<Service> listActiveServices() {
-		
-		
-		String selectActiveServices = "FROM Service WHERE active = :active";
-		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveServices);
+	public List<Product> listActiveProducts() {
+		String selectActiveProducts = "FROM Product WHERE active = :active";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveProducts);
 		query.setParameter("active", true);
 		
 		return query.getResultList();
-	}
 
-	@Override
-	public Service get(int serviceId) {
-		
-		return sessionFactory.getCurrentSession()
-				.get(Service.class, Integer.valueOf(serviceId));
 	}
 
 }
