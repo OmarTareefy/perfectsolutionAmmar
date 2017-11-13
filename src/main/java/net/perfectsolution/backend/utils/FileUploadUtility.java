@@ -11,7 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtility {
 	
-	private static final String ABS_PATH = "C:\\Users\\OKhalil\\git\\perfectsolution\\src\\main\\webapp\\commonAssets\\adminAssets\\myImages\\";
+	private static final String ABS_PATH = "C:\\Users\\omar\\Desktop\\Spring\\Website\\perfectsolution\\src\\main\\webapp\\commonAssets\\adminAssets\\myImages\\";
+	//private static final String ABS_PATH = "C:\\Users\\OKhalil\\git\\perfectsolution\\src\\main\\webapp\\commonAssets\\adminAssets\\myImages\\";
 	private static String REAL_PATH = "";
 	
 	public static void uploadFile(HttpServletRequest request, MultipartFile file, String code){

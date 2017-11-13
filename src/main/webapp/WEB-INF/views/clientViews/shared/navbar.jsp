@@ -1,5 +1,5 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<div id="header" class="navbar-toggleable-md sticky clearfix">
+<div id="header" class="navbar-toggleable-md shadow-after-3  sticky clearfix">
 
 	<!-- TOP NAV -->
 	<header id="topNav">

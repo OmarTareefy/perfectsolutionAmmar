@@ -23,9 +23,11 @@
 		<!--  <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />-->
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" />
+		<!-- 
 		<session-management invalid-session-url="/login">
 			<concurrency-control max-sessions="1"  expired-url="/login"/>
-		</session-management>	
+		</session-management>
+		 -->	
 		<logout />
 		<csrf disabled="true"/>
 	</http>
