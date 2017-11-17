@@ -1,70 +1,117 @@
 
-					<!-- BOXES -->
+
+<div class="row">
+
+	<div class="col-md-12">
+
+		<!-- ------ -->
+		<div class="panel panel-default">
+			<div class="panel-heading panel-heading-transparent">
+				<strong>Manage Configurations</strong>
+			</div>
+
+			<div class="panel-body">
+
+
+				<!-- Alert-->
+				<c:if test="${not empty message}">
+					<!-- Success -->
+					<c:if test="${message == 'success'}">
+						<div class="alert alert-success alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>Thank you! Configurations have been updated successfully.</strong>
+						</div>
+					</c:if>
+					<c:if test="${message == 'failure'}">
+						<div class="alert alert-danger alert-dismissible mb-30">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<strong>There was an issue updating Configuration page.</strong>
+						</div>
+					</c:if>
+
+				</c:if>
+				<!-- /Alert Success -->
+
+				<sf:form modelAttribute="configuration"
+					action="${contextRoot}/manage/configuration/" method="POST"
+					data-success="Sent! Thank you!"
+					data-toastr-position="top-right">
+					<fieldset>
+						
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Gmail Sender Mail Username*</label>
+									<sf:input type="text" path="gmailSenderMailUsername"
+										class="form-control"/>
+									<sf:errors path="gmailSenderMailUsername" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Gmail Sender Mail Password*</label>
+									<sf:input type="text" path="gmailSenderMailPassword"
+										class="form-control"/>
+									<sf:errors path="gmailSenderMailPassword" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Company Mail Address*</label>
+									<sf:input type="text" path="companyMailAddress"
+										class="form-control"/>
+									<sf:errors path="companyMailAddress" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Email Subject*</label>
+									<sf:input type="text" path="emailSubject"
+										class="form-control"/>
+									<sf:errors path="emailSubject" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Company Phone*</label>
+									<sf:input type="text" path="companyPhone"
+										class="form-control"/>
+									<sf:errors path="companyPhone" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+																		
+					</fieldset>
+
 					<div class="row">
-
-						<!-- Feedback Box -->
-						<div class="col-md-3 col-sm-6">
-
-							<!-- BOX -->
-							<div class="box danger"><!-- default, danger, warning, info, success -->
-
-								<div class="box-title"><!-- add .noborder class if box-body is removed -->
-									<h4><a href="#">9866 Feedbacks</a></h4>
-									<small class="block">654 New fedbacks today</small>
-									<i class="fa fa-comments"></i>
-								</div>
-
-								<div class="box-body text-center">
-									<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-										331,265,456,411,367,319,402,312,300,312,283,384,372,269,402,319,416,355,416,371,423,259,361,312,269,402,327
-									</span>
-								</div>
-
-							</div>
-							<!-- /BOX -->
-
+						<div class="col-md-12">
+							<button type="submit"
+								class="btn btn-3d btn-teal btn-xlg btn-block margin-top-30">
+								Submit
+							</button>
 						</div>
+					</div>
+			
+				</sf:form>
 
-						<!-- Profit Box -->
-						<div class="col-md-3 col-sm-6">
+			</div>
 
-							<!-- BOX -->
-							<div class="box warning"><!-- default, danger, warning, info, success -->
+		</div>
+		<!-- /----- -->
 
-								<div class="box-title"><!-- add .noborder class if box-body is removed -->
-									<h4>$10M Profit</h4>
-									<small class="block">1,2 M Profit for this month</small>
-									<i class="fa fa-bar-chart-o"></i>
-								</div>
+	</div>
 
-								<div class="box-body text-center">
-									<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-										331,265,456,411,367,319,402,312,300,312,283,384,372,269,402,319,416,355,416,371,423,259,361,312,269,402,327
-									</span>
-								</div>
-
-							</div>
-							<!-- /BOX -->
-
-						</div>
-
-						<!-- Orders Box -->
-						<div class="col-md-3 col-sm-6">
-
-							<!-- BOX -->
-							<div class="box default"><!-- default, danger, warning, info, success -->
-
-								<div class="box-title"><!-- add .noborder class if box-body is removed -->
-									<h4>58944 Orders</h4>
-									<small class="block">18 New Orders</small>
-									<i class="fa fa-shopping-cart"></i>
-								</div>
-
-								<div class="box-body text-center">
-									<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-										331,265,456,411,367,319,402,312,300,312,283,384,372,269,402,319,416,355,416,371,423,259,361,312,269,402,327
-									</span>
-								</div>
-
-							</div>
-							<!-- /BOX -->
+</div>
