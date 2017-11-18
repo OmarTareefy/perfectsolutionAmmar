@@ -31,8 +31,19 @@
 			<div class="navbar-collapse collapse float-right nav-main-collapse">
 				<nav class="nav-main">
 					<ul id="topMain" class="nav nav-pills nav-main">
-						<li><a href="${currentLocation}?language=en"> English </a></li>
-						<li><a href="${currentLocation}?language=ar"> Arabic </a></li>
+						
+						
+						<li>
+							<c:choose>
+								<c:when test="${locale == 'en'}">
+									<a href="${currentLocation}?language=ar"><spring:message code="arabic"/></a>
+								</c:when>
+								<c:otherwise>
+									<a href="${currentLocation}?language=en"> English </a>
+								</c:otherwise>
+							</c:choose>	
+						</li>
+						
 						<li><a href="${contextRoot}/home"> <spring:message
 									code="home" />
 						</a></li>

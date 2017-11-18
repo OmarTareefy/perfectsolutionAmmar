@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
+import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.About;
+import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
 import net.perfectsolution.backend.utils.FileUploadUtility;
@@ -36,16 +38,46 @@ public class AdminController {
 	
 	@Autowired
 	ProductDAO productDAO;
+
+	@Autowired
+	ConfigurationDAO configurationDAO;
 	
-	@RequestMapping(value = {"/home","/","/index"})
-	public ModelAndView index(){
+	@RequestMapping(value = {"/home","/","/index"}, method = RequestMethod.GET)
+	public ModelAndView index(@RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		
 		mv.addObject("title", "Home");		
 		mv.addObject("userClickAdminHome", true);
 		mv.addObject("services", serviceDAO.list());
 		mv.addObject("products", productDAO.list());
+		Configuration configuration = configurationDAO.get(1);
+		mv.addObject("configuration", configuration);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
+	}
+
+	
+	@RequestMapping(value = {"/configuration"}, method = RequestMethod.POST)
+	public String handleConfigurationSubmit(@Valid @ModelAttribute("configuration") Configuration mConfiguration, BindingResult results, Model model){
+		
+		//if there are any errors
+		if (results.hasErrors()){
+			model.addAttribute("title", "Home");		
+			model.addAttribute("userClickAdminHome", true);
+			return "/adminViews/adminPage";
+		}
+		mConfiguration.setId(1);
+		if(configurationDAO.update(mConfiguration)){
+			return "redirect:/manage/index?operation=success";
+		}else{
+			return "redirect:/manage/index?operation=failure";
+		}
+		
 	}
 	
 	@RequestMapping(value = {"/about"}, method = RequestMethod.GET)
@@ -194,4 +226,6 @@ public class AdminController {
 		return mv;
 	}
 	
+	
+
 }

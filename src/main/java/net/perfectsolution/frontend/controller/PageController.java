@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
+import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.ContactMessage;
 
@@ -23,6 +24,9 @@ public class PageController {
 	
 	@Autowired
 	ServiceDAO serviceDAO;
+	
+	@Autowired
+	ProductDAO productDAO;
 	
 	@Autowired
 	ContactMessageDAO contactMessageDAO;
@@ -91,6 +95,17 @@ public class PageController {
 		mv.addObject("title", "Service");
 		mv.addObject("userClickService", true);
 		mv.addObject("service", serviceDAO.get(id));
+		mv.addObject("services", serviceDAO.listActiveServices());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/product/{id}")
+	public ModelAndView product(@PathVariable("id") int id){
+		ModelAndView mv = new ModelAndView("/clientViews/page");
+		mv.addObject("title", "Product");
+		mv.addObject("userClickProduct", true);
+		mv.addObject("product", productDAO.get(id));
+		mv.addObject("products", productDAO.listActiveProducts());
 		return mv;
 	}
 }

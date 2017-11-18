@@ -6,6 +6,7 @@
 
 <spring:url var="res" value="/resources" />
 <spring:url var="sharedRes" value="/sharedResources" />
+<spring:url var="AdminRes" value="/adminResources" />
 
 <c:set var="currentLocation" value="${requestScope['javax.servlet.forward.request_uri']}"/>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
@@ -104,7 +105,12 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 		
 		<!-- Service comes here-->
 		<c:if test="${userClickService == true}">
-			<%@include file="service2.jsp"%>
+			<%@include file="service.jsp"%>
+		</c:if>
+
+		<!-- Product comes here-->
+		<c:if test="${userClickProduct == true}">
+			<%@include file="product.jsp"%>
 		</c:if>
 
 		<!-- error 404 comes here-->

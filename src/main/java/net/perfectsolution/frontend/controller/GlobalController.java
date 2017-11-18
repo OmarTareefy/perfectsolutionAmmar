@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.frontend.restfulConsumer.WeatherProvider;
 
 @ControllerAdvice
@@ -18,6 +20,10 @@ public class GlobalController {
 	
 	@Autowired
 	ProductDAO productDAO;
+	
+	@Autowired
+	ConfigurationDAO configurationDAO;
+	
 	
 	@Autowired
 	WeatherProvider weatherProvider;
@@ -32,6 +38,11 @@ public class GlobalController {
 		return productDAO.listActiveProducts();
 	}
 
+	@ModelAttribute("configuration")
+	public Configuration getConfiguration(){		
+		return configurationDAO.get(1);
+	}
+	
 	/*
 	@ModelAttribute("weatherDesc")
 	public String weatherDesc(){

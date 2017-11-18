@@ -40,12 +40,12 @@ public class Service {
 	@Transient
 	private MultipartFile file;
 	
-	
+
 	public Service(){
 		//defualt constructor
 		this.code = "SER" + UUID.randomUUID().toString().substring(26).toUpperCase();
+		
 	}
-	
 	
 	public MultipartFile getFile() {
 		return file;

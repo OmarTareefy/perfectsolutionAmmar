@@ -59,6 +59,18 @@ CREATE TABLE about(
 	desc_img_url NVARCHAR(128),
 	CONSTRAINT pk_about_id PRIMARY KEY (id)
 );
+
+CREATE TABLE configuration(
+	id int NOT NULL AUTO_INCREMENT,
+	gmail_sender_mail_username NVARCHAR(128),
+    gmail_sender_mail_password NVARCHAR(128),
+    company_mail_address NVARCHAR(128),
+    email_subject NVARCHAR(128),
+	company_phone NVARCHAR(128),
+	CONSTRAINT pk_configuration_id PRIMARY KEY (id)
+);
+insert into configuration (gmail_sender_mail_username, gmail_sender_mail_password, company_mail_address, email_subject, company_phone)values('Mashagbawebsite', 'mashagbawebsite2017', 'omar.tareefy@hotmail.com', 'Message from a client', '+962-78-650-1066');
+
 alter table about drop column desc_img_url
 alter table about drop column top_img_url
 
