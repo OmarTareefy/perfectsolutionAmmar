@@ -31,8 +31,8 @@ public class ServiceDAOImpl implements ServiceDAO {
 
 	@Override
 	public boolean update(Service service) {
-		// TODO Auto-generated method stub
-		return false;
+		sessionFactory.getCurrentSession().update(service);
+		return true;
 	}
 
 	@Override

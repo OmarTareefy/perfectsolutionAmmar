@@ -150,11 +150,13 @@ public class AdminController {
 			FileUploadUtility.uploadFile(request, mService.getFile(), mService.getCode());
 		}
 		
-		if(serviceDAO.add(mService)){
-			return "redirect:/manage/service?operation=success";
-		}else{
-			return "redirect:/manage/service?operation=failure";
+		if (mService.getId() == 0) {
+			serviceDAO.add(mService);
+		} else {// update the product if id is not 0
+			serviceDAO.update(mService);
 		}
+		
+		return "redirect:/manage/service?operation=success";
 		
 	}
 
@@ -194,11 +196,14 @@ public class AdminController {
 			FileUploadUtility.uploadFile(request, mProduct.getFile(), mProduct.getCode());
 		}
 		
-		if(productDAO.add(mProduct)){
-			return "redirect:/manage/product?operation=success";
-		}else{
-			return "redirect:/manage/product?operation=failure";
+		if (mProduct.getId() == 0) {
+			productDAO.add(mProduct);
+		} else {// update the product if id is not 0
+			productDAO.update(mProduct);
 		}
+		
+		return "redirect:/manage/product?operation=success";
+		
 		
 	}
 	

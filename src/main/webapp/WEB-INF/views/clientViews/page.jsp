@@ -76,10 +76,8 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 
 
 	<!-- slidetop comes here-->
-
-	<%@include file="./shared/slidetop.jsp"%>
-
-
+ 
+<!-- include file="./shared/slidetop.jsp -->
 
 	<!-- wrapper -->
 	<div id="wrapper">

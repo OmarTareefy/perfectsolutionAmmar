@@ -6,15 +6,15 @@
 		<div class="row">
 
 			<div class="col-md-3">
-				<!-- Footer Logo -->
-				<img class="footer-logo" src="${res}/images/_smarty/logo-footer.png"
-					alt="" />
+		
+				<!-- <img class="footer-logo" src="${res}/images/_smarty/logo-footer.png"
+					alt="" /> -->
 
-				<!-- Small Description -->
+	
 				<p>Integer posuere erat a ante venenatis dapibus posuere velit
 					aliquet.</p>
 
-				<!-- Contact Address -->
+	
 				<address>
 					<ul class="list-unstyled">
 						<li class="footer-sprite address">PO Box 21132<br> Here
@@ -25,7 +25,7 @@
 							href="mailto:support@yourname.com">support@yourname.com</a></li>
 					</ul>
 				</address>
-				<!-- /Contact Address -->
+	 
 
 			</div>
 <!-- 
@@ -132,11 +132,13 @@
 	<div class="copyright">
 		<div class="container">
 			<ul class="float-right m-0 list-inline mobile-block">
+			
+			<!-- 
 				<li><a href="#">Terms &amp; Conditions</a></li>
 				<li>&bull;</li>
 				<li><a href="#">Privacy</a></li>
-			</ul>
-			&copy; All Rights Reserved, Company LTD
+			</ul> -->
+			&copy; All Rights Reserved, Keys Of Quality
 		</div>
 	</div>
 </footer>

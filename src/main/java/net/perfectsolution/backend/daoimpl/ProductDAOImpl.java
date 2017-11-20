@@ -39,8 +39,8 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public boolean update(Product product) {
-		// TODO Auto-generated method stub
-		return false;
+		sessionFactory.getCurrentSession().update(product);
+		return true;
 	}
 
 	@Override
