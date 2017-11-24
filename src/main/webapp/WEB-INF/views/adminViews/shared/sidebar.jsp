@@ -20,7 +20,7 @@
 		<ul class="nav nav-list">
 			<li id="home">
 				<!-- dashboard --> <a class="dashboard" href="${contextRoot}/manage/home">
-					<i class="main-icon fa fa-dashboard"></i> <span>Dashboard</span>
+					<i class="main-icon fa fa-dashboard"></i> <span>Home</span>
 			</a>
 			</li>
 			<li id="about">
@@ -28,42 +28,67 @@
 					<i class="main-icon fa fa-info-circle"></i> <span>About Us</span>
 			</a>
 			</li>
-			<li id="service">
-				<!-- Services --> 
-				<a href="#">
-					<i class="fa fa-menu-arrow pull-right"></i>
-					<i class="main-icon fa fa-cube"></i> <span>Services</span>
-				</a>
-				<ul><!-- submenus -->
-				
-					<c:forEach items="${services}" var="service">
-						<li><a href="${contextRoot}/manage/service/${service.id}">
-							${service.nameEn}
-						</a></li>
-					</c:forEach>
-					
-					<li><a href="${contextRoot}/manage/service">Add New</a></li>
-				</ul>
-			</li>
-			
+
+
+
 			<li id="product">
 				<a href="#">
 					<i class="fa fa-menu-arrow pull-right"></i>
 					<i class="main-icon fa fa-television"></i> <span>Products</span>
 				</a>
-				<ul><!-- submenus -->
+				<ul>
 				
-				
-					<c:forEach items="${products}" var="product">
-						<li><a href="${contextRoot}/manage/product/${product.id}">
-							${product.nameEn}
-						</a></li>
+					<c:forEach items="${productCategoriesMap}" var="entry">
+						<li>
+						<a href="#">
+							<i class="fa fa-menu-arrow pull-right"></i>
+							${entry.key.nameEn}
+						</a>
+							<ul>
+								<c:forEach items="${entry.value}" var="product">
+									<li><a href="${contextRoot}/manage/product/${product.id}">
+										${product.nameEn}
+									</a></li>
+								</c:forEach>
+							
+								<li><a href="${contextRoot}/manage/product">Add New</a></li>
+								
+							</ul>
+						</li>
 					</c:forEach>
-				
-					<li><a href="${contextRoot}/manage/product">Add New</a></li>
+		
 				</ul>
-				<!-- Prodcut -->
-			</li>	
+			</li>
+			
+			
+			<li id="service">
+				<a href="#">
+					<i class="fa fa-menu-arrow pull-right"></i>
+					<i class="main-icon fa fa-cube"></i> <span>Services</span>
+				</a>
+				<ul>
+				
+					<c:forEach items="${serviceCategoriesMap}" var="entry">
+						<li>
+						<a href="#">
+							<i class="fa fa-menu-arrow pull-right"></i>
+							${entry.key.nameEn}
+						</a>
+							<ul>
+								<c:forEach items="${entry.value}" var="service">
+									<li><a href="${contextRoot}/manage/service/${service.id}">
+										${service.nameEn}
+									</a></li>
+								</c:forEach>
+							
+								<li><a href="${contextRoot}/manage/service">Add New</a></li>
+								
+							</ul>
+						</li>
+					</c:forEach>
+		
+				</ul>
+			</li>
 			
 		</ul>
 

@@ -34,6 +34,70 @@ public class Configuration {
 	@Column(name = "company_phone")
 	private String companyPhone;
 
+	@NotBlank(message = "Please enter the Facebook link")
+	@Column(name = "facebook")
+	private String facebook;
+
+	@NotBlank(message = "Please enter the Twitter link")
+	@Column(name = "twitter")
+	private String twitter;
+
+	
+	public String getFacebook() {
+		return facebook;
+	}
+
+
+	
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
+
+	
+	public String getTwitter() {
+		return twitter;
+	}
+
+
+	
+	public void setTwitter(String twitter) {
+		this.twitter = twitter;
+	}
+
+
+	
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+
+	
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+
+	
+	public String getYoutube() {
+		return youtube;
+	}
+
+
+	
+	public void setYoutube(String youtube) {
+		this.youtube = youtube;
+	}
+
+
+	@NotBlank(message = "Please enter the Linkedin link")
+	@Column(name = "linkedin")
+	private String linkedin;
+
+	@NotBlank(message = "Please enter the Youtube link")
+	@Column(name = "youtube")
+	private String youtube;
+
 	
 	public int getId() {
 		return id;

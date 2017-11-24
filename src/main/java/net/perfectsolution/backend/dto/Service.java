@@ -37,6 +37,9 @@ public class Service {
 	private String code;
 	@Column(name = "is_active")
 	private boolean active;
+	@Column(name = "category_id")
+	private int categoryId;
+
 	@Transient
 	private MultipartFile file;
 	
@@ -74,6 +77,15 @@ public class Service {
 
 	public String getNameEn() {
 		return nameEn;
+	}
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public void setNameEn(String nameEn) {

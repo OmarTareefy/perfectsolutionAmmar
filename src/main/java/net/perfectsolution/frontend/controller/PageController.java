@@ -13,10 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
+import net.perfectsolution.backend.dao.CategoryDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.ContactMessage;
+import net.perfectsolution.backend.dto.Product;
+import net.perfectsolution.backend.dto.Service;
 
 @Controller
 public class PageController {
@@ -34,7 +37,8 @@ public class PageController {
 	@Autowired
 	AboutDAO aboutDAO;
 	
-	
+	@Autowired
+	CategoryDAO categoryDAO;	
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -94,8 +98,10 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Service");
 		mv.addObject("userClickService", true);
-		mv.addObject("service", serviceDAO.get(id));
-		mv.addObject("services", serviceDAO.listActiveServices());
+		Service service = serviceDAO.get(id);
+		mv.addObject("service", service);
+		mv.addObject("category", categoryDAO.get(service.getCategoryId()));
+		mv.addObject("services", serviceDAO.listCategoryActiveServices(service.getCategoryId()));
 		return mv;
 	}
 	
@@ -104,8 +110,10 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Product");
 		mv.addObject("userClickProduct", true);
-		mv.addObject("product", productDAO.get(id));
-		mv.addObject("products", productDAO.listActiveProducts());
+		Product product = productDAO.get(id);
+		mv.addObject("product", product);
+		mv.addObject("category", categoryDAO.get(product.getCategoryId()));
+		mv.addObject("products", productDAO.listCategoryActiveProducts(product.getCategoryId()));
 		return mv;
 	}
 }

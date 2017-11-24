@@ -9,8 +9,9 @@ public interface ProductDAO {
 	Product get(int id);
 	boolean add (Product product);
 	boolean update (Product product);
-	boolean delete (Product product);
 
+	List<Product> listCategoryActiveProducts(int categoryId);
+	List<Product> listCategoryProducts(int categoryId);
+	
 	List<Product> list();
-	List<Product> listActiveProducts();
 }

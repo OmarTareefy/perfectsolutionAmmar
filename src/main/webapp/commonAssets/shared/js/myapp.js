@@ -31,4 +31,23 @@ $(function() {
 
 	}
 	
+	$('#switchProduct').change(function(){
+		var thisValue = $(this).val();
+		var productId = $('#id').val();
+		
+		var activationUrl = window.contextRoot + '/manage/product/' + productId + '/activation'
+		$.post(activationUrl);
+	});
+	
+	$('#switchService').change(function(){
+		
+		var thisValue = $(this).val();
+		var serviceId = $('#id').val();
+		
+		var activationUrl = window.contextRoot + '/manage/service/' + serviceId + '/activation'
+		$.post(activationUrl);
+	
+	});
+	
+	
 });

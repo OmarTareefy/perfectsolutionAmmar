@@ -1303,6 +1303,7 @@ section.dark.page-header ul.page-options a {
 	   -moz-transition: all .300s;
 		 -o-transition: all .300s;
 			transition: all .300s;
+			margin-top: 6px;
 }
 #header a.logo.logo-responsive>img {
 	height:100%; /* used on center - example: page-coming-soon-1.html */
@@ -8656,7 +8657,7 @@ section.dark-2 div.category-grid .card {
  **************************************************************** **/
 #footer {
 	font-size:14px;
-	color: rgba(255,255,255,0.6);
+	color: rgba(255,255,255,1);
 	display: block;
 
 	background: #313131;
@@ -8667,6 +8668,7 @@ section.dark-2 div.category-grid .card {
 	background: -ms-linear-gradient(top, #555555 0%, #313131 100%);
 	background: linear-gradient(to bottom, #555555 0%,#313131 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#555555', endColorstr='#313131',GradientType=0 );
+	background: #626366;
 }
 #footer>.container {
 	padding-top:60px;
@@ -8745,11 +8747,11 @@ section.dark-2 div.category-grid .card {
 	}
 
 	#footer a {
-		color: rgba(255,255,255,0.6);
+		color: rgba(255,255,255,1);
 		text-decoration:none;
 	}
 	#footer a:hover {
-		color: rgba(255,255,255,0.9);
+		color: rgba(255,255,255,1);
 	}
 	#footer a>i.fa {
 		padding-right: 6px;
@@ -8834,10 +8836,10 @@ section.dark-2 div.category-grid .card {
 		font-weight:300;
 	}
 	#footer ul.footer-links>li>a {
-		color: rgba(255,255,255,0.6);
+		color: rgba(255,255,255,1);
 	}
 	#footer ul.footer-links>li>a:hover {
-		color: rgba(255,255,255,0.9);
+		color: rgba(255,255,255,1);
 	}
 	#footer ul.footer-links>li>a:before {
 		content: "\f105";

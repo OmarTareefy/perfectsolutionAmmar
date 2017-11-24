@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dto.Product;
+import net.perfectsolution.backend.dto.Service;
 
 @Transactional
 @Repository("productDAO")
@@ -39,14 +40,14 @@ public class ProductDAOImpl implements ProductDAO{
 
 	@Override
 	public boolean update(Product product) {
-		sessionFactory.getCurrentSession().update(product);
+		try{
+			sessionFactory.getCurrentSession().update(product);
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+			return false;
+		}
 		return true;
-	}
-
-	@Override
-	public boolean delete(Product product) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -58,13 +59,22 @@ public class ProductDAOImpl implements ProductDAO{
 	}
 
 	@Override
-	public List<Product> listActiveProducts() {
-		String selectActiveProducts = "FROM Product WHERE active = :active";
-		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveProducts);
+	public List<Product> listCategoryActiveProducts(int categoryId) {
+		String selectCategoryActiveProducts = "FROM Product WHERE active = :active and categoryId = :categoryId";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectCategoryActiveProducts);
 		query.setParameter("active", true);
+		query.setParameter("categoryId", categoryId);
 		
 		return query.getResultList();
+	}
 
+	@Override
+	public List<Product> listCategoryProducts(int categoryId) {
+		String selectCategoryProducts = "FROM Product WHERE categoryId = :categoryId";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectCategoryProducts);
+		query.setParameter("categoryId", categoryId);
+		
+		return query.getResultList();
 	}
 
 }

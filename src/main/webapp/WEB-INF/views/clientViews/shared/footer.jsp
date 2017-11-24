@@ -5,7 +5,7 @@
 
 		<div class="row">
 
-			<div class="col-md-3">
+			<div class="col-md-4">
 		
 				<!-- <img class="footer-logo" src="${res}/images/_smarty/logo-footer.png"
 					alt="" /> -->
@@ -28,7 +28,7 @@
 	 
 
 			</div>
-<!-- 
+<!--  
 			<div class="col-md-3">
 
 				
@@ -47,7 +47,7 @@
 
 			</div>
  -->
-			<div class="col-md-2">
+			<div class="col-md-3">
 
 				<!-- Links -->
 				<h4 class="letter-spacing-1"><spring:message
@@ -72,7 +72,7 @@
 
 			</div>
 
-			<div class="col-md-4">
+			<div class="col-md-5">
 
 				<!-- Newsletter Form -->
 				<h4 class="letter-spacing-1"><spring:message
@@ -98,26 +98,22 @@
 
 				<!-- Social Icons -->
 				<div class="mt-20">
-					<a href="https://www.facebook.com/omar.attareefy"
+					<a href="${configuration.facebook}"
 						class="social-icon social-icon-border social-facebook float-left"
 						data-toggle="tooltip" data-placement="top" title="Facebook"> <i
 						class="icon-facebook"></i> <i class="icon-facebook"></i>
-					</a> <a href="#"
+					</a> <a href="${configuration.twitter}"
 						class="social-icon social-icon-border social-twitter float-left"
 						data-toggle="tooltip" data-placement="top" title="Twitter"> <i
 						class="icon-twitter"></i> <i class="icon-twitter"></i>
-					</a> <a href="#"
-						class="social-icon social-icon-border social-gplus float-left"
-						data-toggle="tooltip" data-placement="top" title="Google plus">
-						<i class="icon-gplus"></i> <i class="icon-gplus"></i>
-					</a> <a href="#"
+					</a><a href="${configuration.linkedin}"
 						class="social-icon social-icon-border social-linkedin float-left"
 						data-toggle="tooltip" data-placement="top" title="Linkedin"> <i
 						class="icon-linkedin"></i> <i class="icon-linkedin"></i>
-					</a> <a href="#"
-						class="social-icon social-icon-border social-rss float-left"
-						data-toggle="tooltip" data-placement="top" title="Rss"> <i
-						class="icon-rss"></i> <i class="icon-rss"></i>
+					</a> <a href="${configuration.youtube}"
+						class="social-icon social-icon-border social-youtube float-left"
+						data-toggle="tooltip" data-placement="top" title="Youtube"> <i
+						class="icon-youtube"></i> <i class="icon-youtube"></i>
 					</a>
 
 				</div>

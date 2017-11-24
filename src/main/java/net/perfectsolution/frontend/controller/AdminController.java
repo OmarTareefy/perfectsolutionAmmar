@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
@@ -49,8 +50,6 @@ public class AdminController {
 		
 		mv.addObject("title", "Home");		
 		mv.addObject("userClickAdminHome", true);
-		mv.addObject("services", serviceDAO.list());
-		mv.addObject("products", productDAO.list());
 		Configuration configuration = configurationDAO.get(1);
 		mv.addObject("configuration", configuration);
 		
@@ -136,7 +135,14 @@ public class AdminController {
 	public String handleServiceSubmit(@Valid @ModelAttribute("service") Service mService, BindingResult results, Model model, HttpServletRequest request){
 		
 		
-		new ServiceValidator().validate(mService, results);
+		// handle image validation for new products
+		if (mService.getId() == 0) {
+			new ServiceValidator().validate(mService, results);
+		} else {
+			if (!mService.getFile().getOriginalFilename().equals("")) {
+				new ServiceValidator().validate(mService, results);
+			}
+		}
 		
 		
 		//if there are any errors
@@ -182,7 +188,15 @@ public class AdminController {
 	public String handleProductSubmit(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model model, HttpServletRequest request){
 		
 		
-		new ProductValidator().validate(mProduct, results);
+		// handle image validation for new products
+		if (mProduct.getId() == 0) {
+			new ProductValidator().validate(mProduct, results);
+		} else {
+			if (!mProduct.getFile().getOriginalFilename().equals("")) {
+				new ProductValidator().validate(mProduct, results);
+			}
+		}
+		
 		
 		
 		//if there are any errors
@@ -231,6 +245,23 @@ public class AdminController {
 		return mv;
 	}
 	
-	
+	@RequestMapping(value = "/product/{id}/activation", method = RequestMethod.POST)
+	@ResponseBody
+	public void handleProductActivation(@PathVariable int id) {
+		Product product = productDAO.get(id);
 
+		boolean isActive = product.isActive();
+		product.setActive(!isActive);
+		productDAO.update(product);
+	}
+
+	@RequestMapping(value = "/service/{id}/activation", method = RequestMethod.POST)
+	@ResponseBody
+	public void handleServiceActivation(@PathVariable int id) {
+		Service service = serviceDAO.get(id);
+
+		boolean isActive = service.isActive();
+		service.setActive(!isActive);
+		serviceDAO.update(service);
+	}
 }

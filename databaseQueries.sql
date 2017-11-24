@@ -1,13 +1,10 @@
 CREATE DATABASE `perfectsolution` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-
-CREATE TABLE product_category (
+CREATE TABLE category (
 	id int NOT NULL AUTO_INCREMENT,
+	category_type int NOT NULL,
 	name_en NVARCHAR(50),
     name_ar NVARCHAR(50),
-	description_en NTEXT,
-    description_ar NTEXT,
-	image_url NVARCHAR(50),
 	is_active BOOLEAN,
 	CONSTRAINT pk_category_id PRIMARY KEY (id) 
 );
@@ -31,8 +28,7 @@ CREATE TABLE product (
     description_ar TEXT,
 	is_active BOOLEAN,
 	category_id INT,
-	CONSTRAINT pk_product_id PRIMARY KEY (id),
- 	CONSTRAINT fk_product_category_id FOREIGN KEY (category_id) REFERENCES product_category (id)
+	CONSTRAINT pk_product_id PRIMARY KEY (id)
 );
 
 CREATE TABLE service (
@@ -67,10 +63,15 @@ CREATE TABLE configuration(
     company_mail_address NVARCHAR(128),
     email_subject NVARCHAR(128),
 	company_phone NVARCHAR(128),
+	youtube NVARCHAR(128),
+	facebook NVARCHAR(128),
+	linkedin NVARCHAR(128),
+	twitter NVARCHAR(128)
 	CONSTRAINT pk_configuration_id PRIMARY KEY (id)
 );
 insert into configuration (gmail_sender_mail_username, gmail_sender_mail_password, company_mail_address, email_subject, company_phone)values('Mashagbawebsite', 'mashagbawebsite2017', 'omar.tareefy@hotmail.com', 'Message from a client', '+962-78-650-1066');
 
 alter table about drop column desc_img_url
 alter table about drop column top_img_url
+alter table product drop foreign key fk_product_category_id
 

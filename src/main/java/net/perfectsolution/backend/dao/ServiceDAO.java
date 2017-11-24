@@ -8,8 +8,9 @@ public interface ServiceDAO {
 	Service get(int id);
 	boolean add (Service service);
 	boolean update (Service service);
-	boolean delete (Service service);
 
+	List<Service> listCategoryActiveServices(int categoryId);
+	List<Service> listCategoryServices(int categoryId);
+	
 	List<Service> list();
-	List<Service> listActiveServices();
 }

@@ -40,6 +40,7 @@
 					<fieldset>
 						
 
+
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
@@ -95,6 +96,10 @@
 							</div>
 						</div>
 						
+						<label class="switch switch-success switch-round">
+							<input type="checkbox" checked="" name="switchProduct" id="switchProduct" path="active">
+							<span class="switch-label" data-on="YES" data-off="NO"></span>
+						</label>
 
 					</fieldset>
 

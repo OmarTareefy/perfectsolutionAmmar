@@ -93,6 +93,50 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Facebook*</label>
+									<sf:input type="text" path="facebook"
+										class="form-control"/>
+									<sf:errors path="facebook" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Twitter*</label>
+									<sf:input type="text" path="twitter"
+										class="form-control"/>
+									<sf:errors path="twitter" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>LinkedIn*</label>
+									<sf:input type="text" path="linkedin"
+										class="form-control"/>
+									<sf:errors path="linkedin" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label>Youtube*</label>
+									<sf:input type="text" path="youtube"
+										class="form-control"/>
+									<sf:errors path="youtube" cssClass="help-block" element="em" />
+								</div>
+							</div>
+						</div>
 																		
 					</fieldset>
 

@@ -1,41 +1,39 @@
 package net.perfectsolution.backend.daoimpl;
 
-import java.math.BigInteger;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
+import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.ContactMessage;
 import net.perfectsolution.backend.utils.Utilities;
 
-@Configuration
-@PropertySource("/WEB-INF/props/config.properties")
+//@Configuration
+//@PropertySource("/WEB-INF/props/config.properties")
 @Repository("contactMessageDAO")
 public class ContactMessageDAOImpl implements ContactMessageDAO {
-	
+/*	
 	@Value("${gmailSenderMailUsername}") private String USER_NAME; // GMail user name
 	@Value("${gmailSenderMailPassword}") private String PASSWORD; // GMail password
 	@Value("${companyMailAddress}") private String RECIPIENT;
 	@Value("${emailSubject}") private String SUBJECT;
-	
-	
+*/	
+	@Autowired
+	ConfigurationDAO configurationDAO;
+/*	
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
 		return new PropertySourcesPlaceholderConfigurer();
 	}
-
+*/
 	@Override
-	public boolean sendContactMessage(ContactMessage contactMessage) {	
-		String from = USER_NAME;
-		String pass = PASSWORD;
-		String to = RECIPIENT;
-		String subject = SUBJECT ;
+	public boolean sendContactMessage(ContactMessage contactMessage) {
+		Configuration configuration = configurationDAO.get(1);
+		String from = configuration.getGmailSenderMailUsername();
+		String pass = configuration.getGmailSenderMailPassword();
+		String to = configuration.getCompanyMailAddress();
+		String subject = configuration.getEmailSubject() ;
 		String htmlBody = buildEmailBody(contactMessage);
 		return Utilities.sendFromGMail(from, pass, to, subject, htmlBody);
 	}

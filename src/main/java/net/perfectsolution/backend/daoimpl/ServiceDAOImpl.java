@@ -36,12 +36,6 @@ public class ServiceDAOImpl implements ServiceDAO {
 	}
 
 	@Override
-	public boolean delete(Service service) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public List<Service> list() {
 
 		
@@ -52,21 +46,29 @@ public class ServiceDAOImpl implements ServiceDAO {
 	}
 
 	@Override
-	public List<Service> listActiveServices() {
+	public Service get(int serviceId) {
 		
-		
-		String selectActiveServices = "FROM Service WHERE active = :active";
-		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveServices);
+		return sessionFactory.getCurrentSession()
+				.get(Service.class, Integer.valueOf(serviceId));
+	}
+
+	@Override
+	public List<Service> listCategoryActiveServices(int categoryId) {
+		String selectCategoryActiveServices = "FROM Service WHERE active = :active and categoryId = :categoryId";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectCategoryActiveServices);
 		query.setParameter("active", true);
+		query.setParameter("categoryId", categoryId);
 		
 		return query.getResultList();
 	}
 
 	@Override
-	public Service get(int serviceId) {
+	public List<Service> listCategoryServices(int categoryId) {
+		String selectCategoryServices = "FROM Service WHERE categoryId = :categoryId";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectCategoryServices);
+		query.setParameter("categoryId", categoryId);
 		
-		return sessionFactory.getCurrentSession()
-				.get(Service.class, Integer.valueOf(serviceId));
+		return query.getResultList();
 	}
 
 }

@@ -16,3 +16,14 @@ body, h1, h2, h3, h4, h5, h6 {
     margin: 4px 0 7px 8px;
     border: 1px solid #ddd;
 }
+
+.lang-icon{
+	margin-top: -6px; 
+}
+
+#footer ul.footer-links > li > a::before {
+    content: "\f104";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    padding-left: 10px;
+}

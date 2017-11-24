@@ -37,6 +37,8 @@ public class Product {
 	private String code;
 	@Column(name = "is_active")
 	private boolean active;
+	@Column(name = "category_id")
+	private int categoryId;
 	@Transient
 	private MultipartFile file;
 	
@@ -47,6 +49,18 @@ public class Product {
 	}
 	
 	
+	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+
+	
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
 	public MultipartFile getFile() {
 		return file;
 	}

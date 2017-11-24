@@ -48,7 +48,14 @@
 
 					<header class="text-center mb-30">
 						<h2 class="mb-30">
-							<spring:message code="products" />
+							<c:choose>
+								<c:when test="${locale == 'en'}">
+									${category.nameEn}
+								</c:when>
+								<c:otherwise>
+									${category.nameAr}
+								</c:otherwise>
+							</c:choose>
 						</h2>
 						<hr />
 					</header>
