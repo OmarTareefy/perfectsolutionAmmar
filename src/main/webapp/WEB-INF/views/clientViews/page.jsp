@@ -116,6 +116,11 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 			<%@include file="error404.jsp"%>
 		</c:if>
 
+		<!-- client comes here-->
+		<c:if test="${userClickClient == true}">
+			<%@include file="client.jsp"%>
+		</c:if>
+
 
 
 

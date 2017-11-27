@@ -14,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
 import net.perfectsolution.backend.dao.CategoryDAO;
+import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.ContactMessage;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
@@ -39,6 +41,9 @@ public class PageController {
 	
 	@Autowired
 	CategoryDAO categoryDAO;	
+	
+	@Autowired
+	ClientDAO clientDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -116,4 +121,15 @@ public class PageController {
 		mv.addObject("products", productDAO.listCategoryActiveProducts(product.getCategoryId()));
 		return mv;
 	}
+	
+	@RequestMapping(value = "/client/{id}")
+	public ModelAndView client(@PathVariable("id") int id){
+		ModelAndView mv = new ModelAndView("/clientViews/page");
+		mv.addObject("title", "Client");
+		mv.addObject("userClickClient", true);
+		Client client = clientDAO.get(id);
+		mv.addObject("client", client);
+		return mv;
+	}
+	
 }

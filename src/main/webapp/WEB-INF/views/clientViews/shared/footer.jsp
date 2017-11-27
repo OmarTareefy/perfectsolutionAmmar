@@ -10,19 +10,21 @@
 				<!-- <img class="footer-logo" src="${res}/images/_smarty/logo-footer.png"
 					alt="" /> -->
 
-	
+<!-- 	
 				<p>Integer posuere erat a ante venenatis dapibus posuere velit
 					aliquet.</p>
-
+ -->
 	
 				<address>
 					<ul class="list-unstyled">
+					<!-- 
 						<li class="footer-sprite address">PO Box 21132<br> Here
 							Weare St, Melbourne<br> Vivas 2355 Australia<br>
-						</li>
-						<li class="footer-sprite phone">Phone: 1-800-565-2390</li>
-						<li class="footer-sprite email"><a
-							href="mailto:support@yourname.com">support@yourname.com</a></li>
+						</li> -->
+						<li class="footer-sprite phone"><spring:message code="phone"/>:</strong> <a class="phoneDirection" href="tel:${configuration.companyPhone} />">${configuration.companyPhone}</a></span></li>
+						<li class="footer-sprite email">
+						<!-- <a href="mailto:support@yourname.com">support@yourname.com</a></li>-->
+						<spring:message code="emailAddress" />:</strong> <a href="mailto:${configuration.companyMailAddress} />">${configuration.companyMailAddress}</a>
 					</ul>
 				</address>
 	 

@@ -9,14 +9,15 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import net.perfectsolution.backend.dao.CategoryDAO;
+import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.Category;
+import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
-import net.perfectsolution.frontend.restfulConsumer.WeatherProvider;
 
 @ControllerAdvice
 public class GlobalController {
@@ -34,13 +35,18 @@ public class GlobalController {
 	CategoryDAO categoryDAO;
 	
 	@Autowired
+	ClientDAO clientDAO;
+	
+	/*
+	@Autowired
 	WeatherProvider weatherProvider;
-
+	 */
+	
 	@ModelAttribute("configuration")
 	public Configuration getConfiguration(){		
 		return configurationDAO.get(1);
 	}
-	
+	/*
 	@ModelAttribute("services")
 	public List getServices(){		
 		return serviceDAO.list();
@@ -49,6 +55,17 @@ public class GlobalController {
 	@ModelAttribute("products")
 	public List getProducts(){		
 		return productDAO.list();
+	}
+	*/
+	
+	@ModelAttribute("clients")
+	public List<Client> getClients(){
+		return clientDAO.list();
+	}
+	
+	@ModelAttribute("activeClients")
+	public List<Client> getActiveClients(){
+		return clientDAO.listActiveClients();
 	}
 	
 	@ModelAttribute("productCategoriesMap")

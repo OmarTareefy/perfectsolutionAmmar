@@ -88,15 +88,31 @@
 					<%@include file="adminAbout.jsp"%>
 				</c:if>
 
-				<!-- services comes here-->
+				<!-- services come here-->
 				<c:if test="${userClickAdminService == true}">
 					<%@include file="adminService.jsp"%>
 				</c:if>
 				
-				<!-- products comes here-->
+				<!-- products come here-->
 				<c:if test="${userClickAdminProduct == true}">
 					<%@include file="adminProduct.jsp"%>
 				</c:if>
+				
+				<!-- product category comes here-->
+				<c:if test="${userClickAdminProductCategory == true}">
+					<%@include file="adminProductCategory.jsp"%>
+				</c:if>
+				
+				<!-- product category comes here-->
+				<c:if test="${userClickAdminServiceCategory == true}">
+					<%@include file="adminServiceCategory.jsp"%>
+				</c:if>
+				
+				<!-- client comes here-->
+				<c:if test="${userClickAdminClient == true}">
+					<%@include file="adminClient.jsp"%>
+				</c:if>
+				
 
 			</div>
 		</section>

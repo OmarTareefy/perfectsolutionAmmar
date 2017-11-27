@@ -1,5 +1,14 @@
 CREATE DATABASE `perfectsolution` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+CREATE TABLE client (
+	id int NOT NULL AUTO_INCREMENT,
+	name_en NVARCHAR(50),
+    name_ar NVARCHAR(50),
+	is_active BOOLEAN,
+    code NVARCHAR(20),
+	CONSTRAINT pk_client_id PRIMARY KEY (id) 
+);
+
 CREATE TABLE category (
 	id int NOT NULL AUTO_INCREMENT,
 	category_type int NOT NULL,

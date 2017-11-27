@@ -133,6 +133,30 @@
 
 							</ul></li>
 
+
+
+
+						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
+									code="clients"/></a>
+							<ul class="dropdown-menu">
+
+
+								<c:forEach items="${activeClients}" var="client">
+
+									<li><a href="${contextRoot}/client/${client.id}">
+											<c:choose>
+												<c:when test="${locale == 'en'}">
+														${client.nameEn}
+												</c:when>
+												<c:otherwise>
+													${client.nameAr}
+												</c:otherwise>
+											</c:choose>
+									</a></li>
+								</c:forEach>
+						</ul></li>
+						
+						
 						<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact"
 								/>

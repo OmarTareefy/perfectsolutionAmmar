@@ -16,14 +16,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import net.perfectsolution.backend.dao.AboutDAO;
+import net.perfectsolution.backend.dao.CategoryDAO;
+import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
 import net.perfectsolution.backend.dto.About;
+import net.perfectsolution.backend.dto.Category;
+import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
 import net.perfectsolution.backend.utils.FileUploadUtility;
+import net.perfectsolution.frontend.validator.ClientValidator;
 import net.perfectsolution.frontend.validator.ProductValidator;
 import net.perfectsolution.frontend.validator.ServiceValidator;
 
@@ -42,6 +47,13 @@ public class AdminController {
 
 	@Autowired
 	ConfigurationDAO configurationDAO;
+	
+	@Autowired
+	CategoryDAO categoryDAO;
+	
+	@Autowired
+	ClientDAO clientDAO;
+	
 	
 	@RequestMapping(value = {"/home","/","/index"}, method = RequestMethod.GET)
 	public ModelAndView index(@RequestParam(name = "operation", required = false) String operation){
@@ -255,6 +267,7 @@ public class AdminController {
 		productDAO.update(product);
 	}
 
+
 	@RequestMapping(value = "/service/{id}/activation", method = RequestMethod.POST)
 	@ResponseBody
 	public void handleServiceActivation(@PathVariable int id) {
@@ -264,4 +277,172 @@ public class AdminController {
 		service.setActive(!isActive);
 		serviceDAO.update(service);
 	}
+
+	
+	@RequestMapping(value = {"/productCategory"}, method = RequestMethod.GET)
+	public ModelAndView productCategory(@RequestParam(name = "operation", required = false) String operation){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Product Category");
+		mv.addObject("userClickAdminProductCategory", true);
+		Category productCategory = new Category();
+		productCategory.setActive(true);
+		productCategory.setCategoryType(1);
+		mv.addObject("productCategory", productCategory);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = {"/serviceCategory"}, method = RequestMethod.GET)
+	public ModelAndView serviceCategory(@RequestParam(name = "operation", required = false) String operation){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Service Category");
+		mv.addObject("userClickAdminServiceCategory", true);
+		Category serviceCategory = new Category();
+		serviceCategory.setActive(true);
+		serviceCategory.setCategoryType(2);
+		mv.addObject("serviceCategory", serviceCategory);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = {"/productCategory/{id}"}, method = RequestMethod.GET)
+	public ModelAndView editProductCategory(@PathVariable int id){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Product Category");
+		mv.addObject("userClickAdminProductCategory", true);
+		
+		Category productCategory = categoryDAO.get(id);
+		mv.addObject("productCategory", productCategory);
+		return mv;
+	}
+	
+	@RequestMapping(value = {"/serviceCategory/{id}"}, method = RequestMethod.GET)
+	public ModelAndView editServiceCategory(@PathVariable int id){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Service Category");
+		mv.addObject("userClickAdminServiceCategory", true);
+		
+		Category serviceCategory = categoryDAO.get(id);
+		mv.addObject("serviceCategory", serviceCategory);
+		return mv;
+	}
+
+	@RequestMapping(value = {"/productCategory"}, method = RequestMethod.POST)
+	public String handleProductCategorySubmit(@Valid @ModelAttribute("productCategory") Category mProductCategory, BindingResult results, Model model, HttpServletRequest request){
+		
+		
+		//if there are any errors
+		if (results.hasErrors()){
+			model.addAttribute("title", "Product Category");		
+			model.addAttribute("userClickAdminProductCategory", true);
+			return "/adminViews/adminPage";
+		}
+		
+		if (mProductCategory.getId() == 0) {
+			categoryDAO.add(mProductCategory);
+		} else {// update the product if id is not 0
+			categoryDAO.update(mProductCategory);
+		}
+		
+		return "redirect:/manage/productCategory?operation=success";
+		
+	}
+
+	
+	@RequestMapping(value = {"/serviceCategory"}, method = RequestMethod.POST)
+	public String handleServiceCategorySubmit(@Valid @ModelAttribute("serviceCategory") Category mServiceCategory, BindingResult results, Model model, HttpServletRequest request){
+		
+		
+		//if there are any errors
+		if (results.hasErrors()){
+			model.addAttribute("title", "Service Category");		
+			model.addAttribute("userClickAdminServiceCategory", true);
+			return "/adminViews/adminPage";
+		}
+		
+		if (mServiceCategory.getId() == 0) {
+			categoryDAO.add(mServiceCategory);
+		} else {// update the product if id is not 0
+			categoryDAO.update(mServiceCategory);
+		}
+		
+		return "redirect:/manage/serviceCategory?operation=success";
+		
+	}
+
+	
+	
+	@RequestMapping(value = {"/client"}, method = RequestMethod.GET)
+	public ModelAndView clients(@RequestParam(name = "operation", required = false) String operation){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Client");
+		mv.addObject("userClickAdminClient", true);
+		Client client = new Client();
+		client.setActive(true);
+		mv.addObject("client", client);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
+		return mv;
+	}
+
+	@RequestMapping(value = {"/client"}, method = RequestMethod.POST)
+	public String handleClientSubmit(@Valid @ModelAttribute("client") Client mClient, BindingResult results, Model model, HttpServletRequest request){
+				
+		// handle image validation for new clients
+		if (mClient.getId() == 0) {
+			new ClientValidator().validate(mClient, results);
+		} else {
+			if (!mClient.getFile().getOriginalFilename().equals("")) {
+				new ClientValidator().validate(mClient, results);
+			}
+		}
+		
+		//if there are any errors
+		if (results.hasErrors()){
+			model.addAttribute("title", "Client");		
+			model.addAttribute("userClickAdminClient", true);
+			return "/adminViews/adminPage";
+		}
+		
+		if(!mClient.getFile().getOriginalFilename().equals("")){
+			FileUploadUtility.uploadFile(request, mClient.getFile(), mClient.getCode());
+		}
+		
+		if (mClient.getId() == 0) {
+			clientDAO.add(mClient);
+		} else {// update the product if id is not 0
+			clientDAO.update(mClient);
+		}
+		
+		return "redirect:/manage/client?operation=success";
+	}
+
+	@RequestMapping(value = {"/client/{id}"}, method = RequestMethod.GET)
+	public ModelAndView editClient(@PathVariable int id){
+		
+		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
+		mv.addObject("title", "Client");
+		mv.addObject("userClickAdminClient", true);
+		
+		Client client = clientDAO.get(id);
+		mv.addObject("client", client);
+		return mv;
+	}
+	
 }
