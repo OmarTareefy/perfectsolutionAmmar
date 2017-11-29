@@ -2804,15 +2804,15 @@ body.menu-vertical #mainMenu.sidebar-vertical .navbar-collapse>ul.nav.navbar-nav
 		border-bottom:rgba(0,0,0,0.08) 1px solid;
 	}
 	#header.fixed #topNav a.logo {
-		height:60px;
-		line-height:50px;
+		/*height:60px;
+		line-height:50px;*/
 	}
 	#header.fixed #topNav a.logo>img {
-		height:60px;
+		/*height:60px;*/
 	}
 	#header.fixed #topNav #topMain>li>a {
-		height:60px;
-		line-height:60px;
+		/*height:60px;
+		line-height:60px;*/
 	}
 
 

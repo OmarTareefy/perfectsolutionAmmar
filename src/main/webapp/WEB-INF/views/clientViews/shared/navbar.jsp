@@ -57,7 +57,7 @@
 									code="home"
 								/>
 						</a></li>
-												<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
+						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
 									code="products"
 								/></a>
 							<ul class="dropdown-menu">
@@ -95,7 +95,8 @@
 
 
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
-									code="services"/></a>
+									code="services"
+								/></a>
 							<ul class="dropdown-menu">
 
 
@@ -137,14 +138,14 @@
 
 
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
-									code="clients"/></a>
+									code="clients"
+								/></a>
 							<ul class="dropdown-menu">
 
 
 								<c:forEach items="${activeClients}" var="client">
 
-									<li><a href="${contextRoot}/client/${client.id}">
-											<c:choose>
+									<li><a href="${contextRoot}/client/${client.id}"> <c:choose>
 												<c:when test="${locale == 'en'}">
 														${client.nameEn}
 												</c:when>
@@ -154,9 +155,9 @@
 											</c:choose>
 									</a></li>
 								</c:forEach>
-						</ul></li>
-						
-						
+							</ul></li>
+
+
 						<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact"
 								/>
@@ -166,11 +167,11 @@
 								/>
 						</a></li>
 
-<li><a href="${contextRoot}/manage/home"> <spring:message
-										code="manage"
-									/>
-							</a></li>
-							
+						<li><a href="${contextRoot}/manage/home"> <spring:message
+									code="manage"
+								/>
+						</a></li>
+
 						<!-- 
 						<security:authorize access="hasAuthority('ADMIN')">
 							<li><a href="${contextRoot}/manage/home"> <spring:message

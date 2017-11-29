@@ -22,7 +22,7 @@ this.setCustomValidity('<spring:message code="validationMessage" />')
 <title>${title}</title>
 <meta name="description" content="This is the perfectsolution website" />
 <meta name="Author" content="perfectsolution" />
-
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 <!-- mobile settings -->
 <meta name="viewport"
 	content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />

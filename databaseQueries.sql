@@ -1,5 +1,14 @@
 CREATE DATABASE `perfectsolution` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+CREATE TABLE subscriber (
+	id int NOT NULL AUTO_INCREMENT,
+	email NVARCHAR(70),
+	is_active BOOLEAN,
+    code NVARCHAR(20),
+	CONSTRAINT pk_subscriber_id PRIMARY KEY (id) 
+);
+
+
 CREATE TABLE client (
 	id int NOT NULL AUTO_INCREMENT,
 	name_en NVARCHAR(50),

@@ -58,16 +58,21 @@
 					<li><a href="${contextRoot}/home"> <spring:message
 									code="home" />
 					</a></li>
+					<li><a href="${contextRoot}/product/1"><spring:message
+						code="products" /></a></li>
+					<li><a href="${contextRoot}/service/1"><spring:message
+									code="services" /></a></li>
+					<li><a href="${contextRoot}/client/1"><spring:message
+									code="clients" /></a></li>
+					
 					<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact" />
 						</a></li>
 						<li><a href="${contextRoot}/about"> <spring:message
 									code="about" />
 						</a></li>
-					<li><a href="#"><spring:message
-									code="services" /></a></li>
-					<li><a href="#"><spring:message
-									code="products" /></a></li>
+					
+
 					
 				</ul>
 				<!-- /Links -->
