@@ -33,6 +33,7 @@
 		<ul class="hide">
 
 			<!-- SLIDE  -->
+			<!--  
 			<li data-transition="random" data-slotamount="1"
 				data-masterspeed="1000" data-saveperformance="off"
 				data-title="Slide title 1"
@@ -41,7 +42,16 @@
 				data-lazyload="${res}/demo_files/images/1200x800/7-min.jpg" alt=""
 				data-bgfit="cover" data-bgposition="center bottom"
 				data-bgrepeat="no-repeat" />
-
+-->
+<li data-transition="random" data-slotamount="1"
+				data-masterspeed="1000" data-saveperformance="off"
+				data-title="Slide title 1"
+				data-thumb="${res}/myImages/Home/1.jpg"><img
+				src="${res}/myImages/Home/1.jpg"
+				data-lazyload="${res}/myImages/Home/1.jpg" alt=""
+				data-bgfit="cover" data-bgposition="center bottom"
+				data-bgrepeat="no-repeat" />
+				
 				<div class="overlay dark-4">
 					<!-- dark overlay [1 to 9 opacity] -->
 				</div>
