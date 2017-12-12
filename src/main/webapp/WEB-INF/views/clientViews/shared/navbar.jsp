@@ -1,9 +1,17 @@
 <%@taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"
-%>
-<div id="header"
-	class="navbar-toggleable-md shadow-after-3  sticky clearfix"
->
+	uri="http://www.springframework.org/security/tags"%>
+
+
+<c:choose>
+	<c:when test="${title == 'Home'}">
+		<div id="header"
+			class="transparent navbar-toggleable-md shadow-after-3  sticky clearfix">
+	</c:when>
+	<c:otherwise>
+		<div id="header"
+			class="navbar-toggleable-md shadow-after-3  sticky clearfix">
+	</c:otherwise>
+</c:choose>
 
 	<!-- TOP NAV -->
 	<header id="topNav">
@@ -11,8 +19,7 @@
 
 			<!-- Mobile Menu Button -->
 			<button class="btn btn-mobile" data-toggle="collapse"
-				data-target=".nav-main-collapse"
-			>
+				data-target=".nav-main-collapse">
 				<i class="fa fa-bars"></i>
 			</button>
 
@@ -24,8 +31,7 @@
 
 			<!-- Logo -->
 			<a class="logo float-left" href="${contextRoot}/home"> <img
-				src="${res}/myImages/shared/CompanyLogo1.png" alt=""
-			/>
+				src="${res}/myImages/shared/CompanyLogo1.png" alt="" />
 			</a>
 
 			<!-- 
@@ -42,24 +48,20 @@
 						<li><c:choose>
 								<c:when test="${locale == 'en'}">
 									<a href="${currentLocation}?language=ar"> <img
-										src="${res}/myImages/shared/ar.png" alt=""
-									/></a>
+										src="${res}/myImages/shared/ar.png" alt="" /></a>
 								</c:when>
 								<c:otherwise>
 
 									<a href="${currentLocation}?language=en"><img
-										src="${res}/myImages/shared/en.png" class="lang-icon" salt=""
-									/></a>
+										src="${res}/myImages/shared/en.png" class="lang-icon" salt="" /></a>
 								</c:otherwise>
 							</c:choose></li>
 
 						<li><a href="${contextRoot}/home"> <spring:message
-									code="home"
-								/>
+									code="home" />
 						</a></li>
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
-									code="products"
-								/></a>
+									code="products" /></a>
 							<ul class="dropdown-menu">
 
 								<c:forEach items="${activeProductCategoriesMap}" var="entry">
@@ -95,8 +97,7 @@
 
 
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
-									code="services"
-								/></a>
+									code="services" /></a>
 							<ul class="dropdown-menu">
 
 
@@ -138,8 +139,7 @@
 
 
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
-									code="clients"
-								/></a>
+									code="clients" /></a>
 							<ul class="dropdown-menu">
 
 
@@ -159,17 +159,14 @@
 
 
 						<li><a href="${contextRoot}/contact"> <spring:message
-									code="contact"
-								/>
+									code="contact" />
 						</a></li>
 						<li><a href="${contextRoot}/about"> <spring:message
-									code="about"
-								/>
+									code="about" />
 						</a></li>
 
 						<li><a href="${contextRoot}/manage/home"> <spring:message
-									code="manage"
-								/>
+									code="manage" />
 						</a></li>
 
 						<!-- 
