@@ -19,7 +19,7 @@
 					<c:if test="${message == 'success'}">
 						<div class="alert alert-success alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>Thank you! A Product has been added successfully.</strong>
+							<strong>Thank you! A Product has been added/updated successfully.</strong>
 						</div>
 					</c:if>
 					<c:if test="${message == 'failure'}">
@@ -115,6 +115,7 @@
 					<sf:hidden path="active" />
 					<sf:hidden path="id" />
 					<sf:hidden path="code" />
+					<sf:hidden path="categoryId" />
 					
 				</sf:form>
 

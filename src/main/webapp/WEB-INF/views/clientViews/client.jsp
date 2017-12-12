@@ -1,5 +1,5 @@
 
-			<!-- HOME -->
+		<!-- HOME -->
 			<section id="home">
 						
 				<div class="container text-center">
@@ -28,7 +28,7 @@
 				</div>
 
 			</section>
-			<!-- /HOME -->
+			<!-- /HOME -->	
 
 			<!-- FEATURES -->
 			<section id="features" class="pt-30">

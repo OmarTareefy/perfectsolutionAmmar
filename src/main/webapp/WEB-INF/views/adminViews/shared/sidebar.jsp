@@ -67,7 +67,7 @@
 									</a></li>
 								</c:forEach>
 							
-								<li><a href="${contextRoot}/manage/product">Add New</a></li>
+								<li><a href="${contextRoot}/manage/product/cat/${entry.key.id}">Add New</a></li>
 								
 							</ul>
 						</li>
@@ -97,7 +97,7 @@
 									</a></li>
 								</c:forEach>
 							
-								<li><a href="${contextRoot}/manage/service">Add New</a></li>
+								<li><a href="${contextRoot}/manage/service/cat/${entry.key.id}">Add New</a></li>
 								
 							</ul>
 						</li>
