@@ -126,20 +126,17 @@ public class AdminController {
 		
 	}
 
-	@RequestMapping(value = {"/service"}, method = RequestMethod.GET)
-	public ModelAndView services(@RequestParam(name = "operation", required = false) String operation){
+	@RequestMapping(value = {"/service/cat/{categoryId}"}, method = RequestMethod.GET)
+	public ModelAndView services(@PathVariable(value = "categoryId") int categoryId){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Service");
 		mv.addObject("userClickAdminService", true);
 		Service service = new Service();
 		service.setActive(true);
+		service.setCategoryId(categoryId);
 		mv.addObject("service", service);
-		
-		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("message", operation);
-		}
-		
+
 		return mv;
 	}
 	
@@ -173,25 +170,21 @@ public class AdminController {
 		} else {// update the product if id is not 0
 			serviceDAO.update(mService);
 		}
-		
-		return "redirect:/manage/service?operation=success";
+		return "redirect:/manage/service/" + mService.getId() + "?operation=success";
 		
 	}
 
 	
-	@RequestMapping(value = {"/product"}, method = RequestMethod.GET)
-	public ModelAndView products(@RequestParam(name = "operation", required = false) String operation){
+	@RequestMapping(value = {"/product/cat/{categoryId}"}, method = RequestMethod.GET)
+	public ModelAndView products(@PathVariable(value = "categoryId") int categoryId){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Product");
 		mv.addObject("userClickAdminProduct", true);
 		Product product = new Product();
 		product.setActive(true);
+		product.setCategoryId(categoryId);
 		mv.addObject("product", product);
-		
-		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("message", operation);
-		}
 		
 		return mv;
 	}
@@ -208,9 +201,7 @@ public class AdminController {
 				new ProductValidator().validate(mProduct, results);
 			}
 		}
-		
-		
-		
+
 		//if there are any errors
 		if (results.hasErrors()){
 			model.addAttribute("title", "Product");		
@@ -228,13 +219,11 @@ public class AdminController {
 			productDAO.update(mProduct);
 		}
 		
-		return "redirect:/manage/product?operation=success";
-		
-		
+		return "redirect:/manage/product/" + mProduct.getId() + "?operation=success";
 	}
 	
 	@RequestMapping(value = {"/service/{id}"}, method = RequestMethod.GET)
-	public ModelAndView editService(@PathVariable int id){
+	public ModelAndView editService(@PathVariable int id, @RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Service");
@@ -242,11 +231,16 @@ public class AdminController {
 		
 		Service service = serviceDAO.get(id);
 		mv.addObject("service", service);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
 	}
 
 	@RequestMapping(value = {"/product/{id}"}, method = RequestMethod.GET)
-	public ModelAndView editProduct(@PathVariable int id){
+	public ModelAndView editProduct(@PathVariable int id, @RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Product");
@@ -254,6 +248,11 @@ public class AdminController {
 		
 		Product product = productDAO.get(id);
 		mv.addObject("product", product);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
 	}
 	
@@ -280,7 +279,7 @@ public class AdminController {
 
 	
 	@RequestMapping(value = {"/productCategory"}, method = RequestMethod.GET)
-	public ModelAndView productCategory(@RequestParam(name = "operation", required = false) String operation){
+	public ModelAndView productCategory(){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Product Category");
@@ -289,16 +288,11 @@ public class AdminController {
 		productCategory.setActive(true);
 		productCategory.setCategoryType(1);
 		mv.addObject("productCategory", productCategory);
-		
-		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("message", operation);
-		}
-		
 		return mv;
 	}
 	
 	@RequestMapping(value = {"/serviceCategory"}, method = RequestMethod.GET)
-	public ModelAndView serviceCategory(@RequestParam(name = "operation", required = false) String operation){
+	public ModelAndView serviceCategory(){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Service Category");
@@ -308,15 +302,11 @@ public class AdminController {
 		serviceCategory.setCategoryType(2);
 		mv.addObject("serviceCategory", serviceCategory);
 		
-		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("message", operation);
-		}
-		
 		return mv;
 	}
 	
 	@RequestMapping(value = {"/productCategory/{id}"}, method = RequestMethod.GET)
-	public ModelAndView editProductCategory(@PathVariable int id){
+	public ModelAndView editProductCategory(@PathVariable int id, @RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Product Category");
@@ -324,11 +314,16 @@ public class AdminController {
 		
 		Category productCategory = categoryDAO.get(id);
 		mv.addObject("productCategory", productCategory);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
 	}
 	
 	@RequestMapping(value = {"/serviceCategory/{id}"}, method = RequestMethod.GET)
-	public ModelAndView editServiceCategory(@PathVariable int id){
+	public ModelAndView editServiceCategory(@PathVariable int id, @RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Service Category");
@@ -336,6 +331,11 @@ public class AdminController {
 		
 		Category serviceCategory = categoryDAO.get(id);
 		mv.addObject("serviceCategory", serviceCategory);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
 	}
 
@@ -356,7 +356,7 @@ public class AdminController {
 			categoryDAO.update(mProductCategory);
 		}
 		
-		return "redirect:/manage/productCategory?operation=success";
+		return "redirect:/manage/productCategory/" + mProductCategory.getId() + "?operation=success";
 		
 	}
 
@@ -378,14 +378,14 @@ public class AdminController {
 			categoryDAO.update(mServiceCategory);
 		}
 		
-		return "redirect:/manage/serviceCategory?operation=success";
+		return "redirect:/manage/serviceCategory/" + mServiceCategory.getId() + "?operation=success";
 		
 	}
 
 	
 	
 	@RequestMapping(value = {"/client"}, method = RequestMethod.GET)
-	public ModelAndView clients(@RequestParam(name = "operation", required = false) String operation){
+	public ModelAndView clients(){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Client");
@@ -394,9 +394,6 @@ public class AdminController {
 		client.setActive(true);
 		mv.addObject("client", client);
 		
-		if(operation!=null && !operation.isEmpty()){
-			mv.addObject("message", operation);
-		}
 		
 		return mv;
 	}
@@ -430,11 +427,11 @@ public class AdminController {
 			clientDAO.update(mClient);
 		}
 		
-		return "redirect:/manage/client?operation=success";
+		return "redirect:/manage/client/" + mClient.getId() + "?operation=success";
 	}
 
 	@RequestMapping(value = {"/client/{id}"}, method = RequestMethod.GET)
-	public ModelAndView editClient(@PathVariable int id){
+	public ModelAndView editClient(@PathVariable int id, @RequestParam(name = "operation", required = false) String operation){
 		
 		ModelAndView mv = new ModelAndView("/adminViews/adminPage");
 		mv.addObject("title", "Client");
@@ -442,6 +439,11 @@ public class AdminController {
 		
 		Client client = clientDAO.get(id);
 		mv.addObject("client", client);
+		
+		if(operation!=null && !operation.isEmpty()){
+			mv.addObject("message", operation);
+		}
+		
 		return mv;
 	}
 	

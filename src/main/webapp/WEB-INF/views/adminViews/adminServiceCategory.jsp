@@ -19,7 +19,7 @@
 					<c:if test="${message == 'success'}">
 						<div class="alert alert-success alert-dismissible mb-30">
 							<button type="button" class="close" data-dismiss="alert">&times;</button>
-							<strong>Thank you! A service category has been updated successfully.</strong>
+							<strong>Thank you! A service category has been added/updated successfully.</strong>
 						</div>
 					</c:if>
 					<c:if test="${message == 'failure'}">
