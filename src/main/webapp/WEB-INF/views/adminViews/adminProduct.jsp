@@ -96,11 +96,19 @@
 							</div>
 						</div>
 						
-						<label class="switch switch-success switch-round">
-							<input type="checkbox" checked="" name="switchProduct" id="switchProduct" path="active">
-							<span class="switch-label" data-on="YES" data-off="NO"></span>
-						</label>
-
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label class="radio">
+										<sf:radiobutton path="active" value="1"/><i></i>Active
+									</label>
+									<label class="radio">
+										<sf:radiobutton path="active" value="0"/><i></i>Not Active
+									</label>
+								</div>
+							</div>
+						</div>
+						
 					</fieldset>
 
 					<div class="row">
@@ -112,7 +120,6 @@
 						</div>
 					</div>
 					<!-- Hidden fields for Service -->
-					<sf:hidden path="active" />
 					<sf:hidden path="id" />
 					<sf:hidden path="code" />
 					<sf:hidden path="categoryId" />
