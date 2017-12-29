@@ -87,6 +87,14 @@ CREATE TABLE configuration(
 	twitter NVARCHAR(128)
 	CONSTRAINT pk_configuration_id PRIMARY KEY (id)
 );
+
+CREATE TABLE subscriber(
+	id int NOT NULL AUTO_INCREMENT,
+	email NVARCHAR(128),
+	is_active BOOLEAN,
+	CONSTRAINT pk_subscriber_id PRIMARY KEY (id)
+);
+
 insert into configuration (gmail_sender_mail_username, gmail_sender_mail_password, company_mail_address, email_subject, company_phone)values('Mashagbawebsite', 'mashagbawebsite2017', 'omar.tareefy@hotmail.com', 'Message from a client', '+962-78-650-1066');
 
 alter table about drop column desc_img_url

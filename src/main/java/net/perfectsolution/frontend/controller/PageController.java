@@ -18,10 +18,12 @@ import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.dao.SubscriberDAO;
 import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.ContactMessage;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
+import net.perfectsolution.backend.dto.Subscriber;
 
 @Controller
 public class PageController {
@@ -44,6 +46,9 @@ public class PageController {
 	
 	@Autowired
 	ClientDAO clientDAO;
+	
+	@Autowired
+	SubscriberDAO subscriberDAO;
 	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
@@ -130,6 +135,12 @@ public class PageController {
 		Client client = clientDAO.get(id);
 		mv.addObject("client", client);
 		return mv;
+	}
+	
+	@RequestMapping(value = "/subscriber", method = RequestMethod.POST)
+	public void subscriber(@ModelAttribute("subscriber") Subscriber mSubscriber){
+		mSubscriber.setActive(true);
+		subscriberDAO.add(mSubscriber);
 	}
 	
 }

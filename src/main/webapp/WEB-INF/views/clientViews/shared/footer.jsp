@@ -86,21 +86,17 @@
 									code="keep" /></h4>
 				<p><spring:message
 									code="subscribeToOurNews" /></p>
-
-				<form class="validate" action="php/newsletter.php" method="post"
-					data-success="Subscribed! Thank you!"
-					data-toastr-position="bottom-right">
+				
+				<sf:form modelAttribute="subscriber" action="${contextRoot}/subscriber" method="post">
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-						<input type="email" id="email" name="email"
-							class="form-control required" placeholder="<spring:message
-									code="enterEmail" />">
+						<sf:input type="email" path="email" class="form-control"/>
 						<span class="input-group-btn">
 							<button class="btn btn-success" type="submit"><spring:message
 									code="subscribe" /></button>
 						</span>
 					</div>
-				</form>
+				</sf:form>
 				<!-- /Newsletter Form -->
 
 				<!-- Social Icons -->

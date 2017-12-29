@@ -1,6 +1,5 @@
 package net.perfectsolution.frontend.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -19,6 +18,7 @@ import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
+import net.perfectsolution.backend.dto.Subscriber;
 
 @ControllerAdvice
 public class GlobalController {
@@ -46,6 +46,11 @@ public class GlobalController {
 	@ModelAttribute("configuration")
 	public Configuration getConfiguration(){		
 		return configurationDAO.get(1);
+	}
+	
+	@ModelAttribute("subscriber")
+	public Subscriber addSubscriber(){		
+		return new Subscriber();
 	}
 
 	
