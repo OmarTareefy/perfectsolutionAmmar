@@ -23,10 +23,10 @@ public class FileUploadUtility {
 		 * to make sure all the directory exist
 		 * if they are not, please create the directories 
 		 */
-		if(!new File(ABS_PATH).exists()){
+		//if(!new File(ABS_PATH).exists()){
 			//Create the directories
-			new File(ABS_PATH).mkdirs();
-		}
+			//new File(ABS_PATH).mkdirs();
+		//}
 		
 		if(!new File(REAL_PATH).exists()){
 			//Create the directories
@@ -37,7 +37,7 @@ public class FileUploadUtility {
 			//Server Upload
 			file.transferTo(new File(REAL_PATH + code + ".jpg"));
 			//Project directory upload
-			file.transferTo(new File(ABS_PATH + code + ".jpg"));
+			//file.transferTo(new File(ABS_PATH + code + ".jpg"));
 		}catch(IOException ex){
 			ex.printStackTrace();
 		}
