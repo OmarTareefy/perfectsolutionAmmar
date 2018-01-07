@@ -20,7 +20,7 @@
 
 	<http create-session="never">
 		<!-- only admin access -->
-		<!-- <intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" /> -->
+		<intercept-url pattern="/manage/**" access="hasAuthority('ADMIN')" />
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" />
 		<!-- 

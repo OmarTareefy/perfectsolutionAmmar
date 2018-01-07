@@ -56,6 +56,7 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Home");		
 		mv.addObject("userClickHome", true);
+		
 		return mv;
 	}
 
@@ -138,9 +139,10 @@ public class PageController {
 	}
 	
 	@RequestMapping(value = "/subscriber", method = RequestMethod.POST)
-	public void subscriber(@ModelAttribute("subscriber") Subscriber mSubscriber){
+	public String subscriber(@ModelAttribute("subscriber") Subscriber mSubscriber){
 		mSubscriber.setActive(true);
 		subscriberDAO.add(mSubscriber);
+		return "redirect:/home";
 	}
 	
 }

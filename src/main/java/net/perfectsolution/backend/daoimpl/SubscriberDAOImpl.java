@@ -52,4 +52,15 @@ public class SubscriberDAOImpl implements SubscriberDAO {
 		return query.getResultList();
 	}
 
+	@Override
+	public String getSubscribersAsCSV() {
+		List<Subscriber> subscribers = listActiveSubscribers();
+		StringBuilder subscribersCSV = new StringBuilder();
+		
+		for(Subscriber subsciber : subscribers){
+			subscribersCSV.append(subsciber.getEmail()+";");
+		}
+		return subscribersCSV.toString();
+	}
+
 }
