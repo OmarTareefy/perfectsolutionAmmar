@@ -35,7 +35,9 @@ CREATE TABLE admin (
 	password VARCHAR(60),	
 	CONSTRAINT pk_user_id PRIMARY KEY(id)
 );
-insert into admin (email, role, enabled, password) values ('omar.tareefy@hotmail.com', 'ADMIN', true, 'admin')
+insert into admin (email, role, enabled, password) values ('omar.tareefy@hotmail.com', 'ADMIN', true, '$2a$04$LiVkCrgBBvskN4I9yW6z2.kDopJePMU56gcU1hYYGbiKD9K3S5o/q')
+update	admin
+set 	password = '$2a$04$LiVkCrgBBvskN4I9yW6z2.kDopJePMU56gcU1hYYGbiKD9K3S5o/q'
 
 CREATE TABLE product (
 	id int NOT NULL AUTO_INCREMENT,

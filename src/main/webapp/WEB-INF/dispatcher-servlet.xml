@@ -52,6 +52,7 @@
 
 	<!-- This is for reading the config file from JSP -->
 	<util:properties id="propertyConfigurer" location="/WEB-INF/props/config.properties" />
+	<util:properties id="propertyConfigurer" location="/WEB-INF/props/hibernateConfig.properties" />
 	<context:property-placeholder
 		properties-ref="propertyConfigurer" />
 

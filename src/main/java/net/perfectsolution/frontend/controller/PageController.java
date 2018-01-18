@@ -86,7 +86,7 @@ public class PageController {
 	public String handleContactMessageSubmission(@ModelAttribute("contactMessage") ContactMessage mContactMessage,
 			Model model, HttpServletRequest request) {
 		
-		if(contactMessageDAO.sendContactMessage(mContactMessage)){
+		if(contactMessageDAO.sendContactMessage(mContactMessage, request)){
 			return "redirect:/contact/?operation=success";
 		}else{
 			return "redirect:/contact/?operation=failure";
