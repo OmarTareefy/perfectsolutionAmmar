@@ -6,33 +6,26 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-//@PropertySource("/WEB-INF/props/hibernateConfig.properties")
 @PropertySource(
 	    name = "props",
-	    value = { "/WEB-INF/props/hibernateConfig.properties", "/WEB-INF/props/hibernateConfigDev.properties" })
+	    value = { "/WEB-INF/props/hibernateConfig.properties"})
 @ComponentScan(basePackages = { "net.perfectsolution.backend.dto" })
 @EnableTransactionManagement
 
 public class HibernateConfig {
 	// Database mysql properties
 
-	@Autowired
-	private Environment env;
-	
-	
 	@Value("${databaseUrl}")
 	private String databaseUrl;
 	@Value("${databaseDriver}")
@@ -63,7 +56,6 @@ public class HibernateConfig {
 		dataSource.setUrl(databaseUrl);
 		dataSource.setUsername(databaseUsername);
 		dataSource.setPassword(databasePassword);
-		System.out.println(env.getProperty("databaseUrl"));
 		return dataSource;
 
 	}
