@@ -96,7 +96,7 @@
 							</div>
 						</div>
 						
-<<<<<<< HEAD
+
 						<!-- 
 						<label class="switch switch-success switch-round">
 							<input type="checkbox" (active==1?'checked':'')  name="switchProduct" id="switchProduct" path="active">
@@ -119,7 +119,7 @@
 
 											 
 					
-=======
+
 						<div class="row">
 							<div class="form-group">
 								<div class="col-md-12 col-sm-12">
@@ -133,7 +133,7 @@
 							</div>
 						</div>
 						
->>>>>>> refs/remotes/origin/master
+
 					</fieldset>
 
 					<div class="row">
@@ -145,10 +145,8 @@
 						</div>
 					</div>
 					<!-- Hidden fields for Service -->
-<<<<<<< HEAD
-					
-=======
->>>>>>> refs/remotes/origin/master
+
+
 					<sf:hidden path="id" />
 					<sf:hidden path="code" />
 					<sf:hidden path="categoryId" />
