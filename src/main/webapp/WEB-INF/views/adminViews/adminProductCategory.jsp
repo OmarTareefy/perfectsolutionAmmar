@@ -60,7 +60,20 @@
 								</div>
 							</div>
 						</div>
-					<sf:hidden path="active" />
+						
+						<div class="row">
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12">
+									<label class="radio">
+										<sf:radiobutton path="active" value="1"/><i></i>Active
+									</label>
+									<label class="radio">
+										<sf:radiobutton path="active" value="0"/><i></i>Not Active
+									</label>
+								</div>
+							</div>
+						</div>
+		
 					<sf:hidden path="id" />
 					<sf:hidden path="categoryType" />
 					</fieldset>

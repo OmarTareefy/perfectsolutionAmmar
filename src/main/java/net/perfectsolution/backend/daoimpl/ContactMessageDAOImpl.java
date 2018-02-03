@@ -1,5 +1,11 @@
 package net.perfectsolution.backend.daoimpl;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,16 +34,16 @@ public class ContactMessageDAOImpl implements ContactMessageDAO {
 	}
 */
 	@Override
-	public boolean sendContactMessage(ContactMessage contactMessage) {
+	public boolean sendContactMessage(ContactMessage contactMessage, HttpServletRequest request) {
 		Configuration configuration = configurationDAO.get(1);
 		String from = configuration.getGmailSenderMailUsername();
 		String pass = configuration.getGmailSenderMailPassword();
 		String to = configuration.getCompanyMailAddress();
 		String subject = configuration.getEmailSubject() ;
-		String htmlBody = buildEmailBody(contactMessage);
+		String htmlBody = buildEmailBody(contactMessage, request);
 		return Utilities.sendFromGMail(from, pass, to, subject, htmlBody);
 	}
-	
+	/*
 	private static String buildEmailBody(ContactMessage contactMessage){
 		StringBuilder htmlBody = new StringBuilder();
 		htmlBody.append("<h2>The following message was sent from " + contactMessage.getFullName() +"<h2></br>");
@@ -48,5 +54,29 @@ public class ContactMessageDAOImpl implements ContactMessageDAO {
 			htmlBody.append("<h4>Phone: "+ contactMessage.getPhone() + "</h4></br>");
 		}
 		return htmlBody.toString();
+	}*/
+	
+	private static String buildEmailBody(ContactMessage contactMessage, HttpServletRequest request){
+		StringBuilder htmlBody = new StringBuilder();
+		
+		try {
+			BufferedReader in = new BufferedReader(
+								new FileReader(request.getSession().getServletContext().getRealPath("/WEB-INF/htmlTemplates/clientEmail.html")));
+		    String str;
+		    while ((str = in.readLine()) != null) {
+		    	htmlBody.append(str);
+		    }
+		    in.close();
+		} catch (IOException e) {
+		}
+		
+		String htmlBodyAsString = htmlBody.toString()
+						.replace("(clientfullName)", contactMessage.getFullName())
+						.replace("(clientSubject)", contactMessage.getSubject())
+						.replace("(clientMessage)", contactMessage.getMessage())
+						.replace("(clientEmail)", contactMessage.getEmailAddress())
+						.replace("(clientPhone)", contactMessage.getPhone());
+		
+		return htmlBodyAsString;
 	}
 }

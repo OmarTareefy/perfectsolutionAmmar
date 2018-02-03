@@ -18,10 +18,12 @@ import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ContactMessageDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.dao.SubscriberDAO;
 import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.ContactMessage;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
+import net.perfectsolution.backend.dto.Subscriber;
 
 @Controller
 public class PageController {
@@ -45,12 +47,16 @@ public class PageController {
 	@Autowired
 	ClientDAO clientDAO;
 	
+	@Autowired
+	SubscriberDAO subscriberDAO;
+	
 	@RequestMapping(value = {"/", "/home", "/index"})
 	public ModelAndView index(){
 		
 		ModelAndView mv = new ModelAndView("/clientViews/page");
 		mv.addObject("title", "Home");		
 		mv.addObject("userClickHome", true);
+		
 		return mv;
 	}
 
@@ -80,7 +86,7 @@ public class PageController {
 	public String handleContactMessageSubmission(@ModelAttribute("contactMessage") ContactMessage mContactMessage,
 			Model model, HttpServletRequest request) {
 		
-		if(contactMessageDAO.sendContactMessage(mContactMessage)){
+		if(contactMessageDAO.sendContactMessage(mContactMessage, request)){
 			return "redirect:/contact/?operation=success";
 		}else{
 			return "redirect:/contact/?operation=failure";
@@ -130,6 +136,13 @@ public class PageController {
 		Client client = clientDAO.get(id);
 		mv.addObject("client", client);
 		return mv;
+	}
+	
+	@RequestMapping(value = "/subscriber", method = RequestMethod.POST)
+	public String subscriber(@ModelAttribute("subscriber") Subscriber mSubscriber){
+		mSubscriber.setActive(true);
+		subscriberDAO.add(mSubscriber);
+		return "redirect:/home";
 	}
 	
 }

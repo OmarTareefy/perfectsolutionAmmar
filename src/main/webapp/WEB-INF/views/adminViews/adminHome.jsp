@@ -31,6 +31,13 @@
 
 				</c:if>
 				<!-- /Alert Success -->
+				
+				<div class="fancy-form">
+					<label>Subscribers</label>
+					<textarea rows="5" class="form-control word-count" data-info="textarea-words-info">${subscribers}
+					</textarea>
+				
+				</div><br><br>
 
 				<sf:form modelAttribute="configuration"
 					action="${contextRoot}/manage/configuration/" method="POST"

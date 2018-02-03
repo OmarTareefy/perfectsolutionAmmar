@@ -21,6 +21,7 @@ import net.perfectsolution.backend.dao.ClientDAO;
 import net.perfectsolution.backend.dao.ConfigurationDAO;
 import net.perfectsolution.backend.dao.ProductDAO;
 import net.perfectsolution.backend.dao.ServiceDAO;
+import net.perfectsolution.backend.dao.SubscriberDAO;
 import net.perfectsolution.backend.dto.About;
 import net.perfectsolution.backend.dto.Category;
 import net.perfectsolution.backend.dto.Client;
@@ -54,6 +55,8 @@ public class AdminController {
 	@Autowired
 	ClientDAO clientDAO;
 	
+	@Autowired
+	SubscriberDAO subscriberDAO;
 	
 	@RequestMapping(value = {"/home","/","/index"}, method = RequestMethod.GET)
 	public ModelAndView index(@RequestParam(name = "operation", required = false) String operation){
@@ -64,6 +67,7 @@ public class AdminController {
 		mv.addObject("userClickAdminHome", true);
 		Configuration configuration = configurationDAO.get(1);
 		mv.addObject("configuration", configuration);
+		mv.addObject("subscribers", subscriberDAO.getSubscribersAsCSV());
 		
 		if(operation!=null && !operation.isEmpty()){
 			mv.addObject("message", operation);

@@ -1,8 +1,8 @@
 package net.perfectsolution.frontend.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,6 +18,7 @@ import net.perfectsolution.backend.dto.Client;
 import net.perfectsolution.backend.dto.Configuration;
 import net.perfectsolution.backend.dto.Product;
 import net.perfectsolution.backend.dto.Service;
+import net.perfectsolution.backend.dto.Subscriber;
 
 @ControllerAdvice
 public class GlobalController {
@@ -46,17 +47,12 @@ public class GlobalController {
 	public Configuration getConfiguration(){		
 		return configurationDAO.get(1);
 	}
-	/*
-	@ModelAttribute("services")
-	public List getServices(){		
-		return serviceDAO.list();
-	}
 	
-	@ModelAttribute("products")
-	public List getProducts(){		
-		return productDAO.list();
+	@ModelAttribute("subscriber")
+	public Subscriber addSubscriber(){		
+		return new Subscriber();
 	}
-	*/
+
 	
 	@ModelAttribute("clients")
 	public List<Client> getClients(){
@@ -71,7 +67,7 @@ public class GlobalController {
 	@ModelAttribute("productCategoriesMap")
 	public Map getProductCategoriesMap(){
 		
-		Map <Category, List<Product>> productCategoriesMap = new HashMap <Category, List<Product>>();
+		Map <Category, List<Product>> productCategoriesMap = new TreeMap <Category, List<Product>>();
 		List<Category> list = categoryDAO.list(1);
 		
 		for(Category productCategory : list){
@@ -84,7 +80,7 @@ public class GlobalController {
 	@ModelAttribute("activeProductCategoriesMap")
 	public Map getActiveProductCategoriesMap(){
 		
-		Map <Category, List<Product>> activeProductCategoriesMap = new HashMap <Category, List<Product>>();
+		Map <Category, List<Product>> activeProductCategoriesMap = new TreeMap <Category, List<Product>>();
 		List<Category> list = categoryDAO.listActiveCategories(1);
 		
 		for(Category activeProductCategory : list){
@@ -94,10 +90,13 @@ public class GlobalController {
 		return activeProductCategoriesMap;
 	}
 	
+	
+	
+	
 	@ModelAttribute("serviceCategoriesMap")
 	public Map getServiceCategoriesMap(){
 		
-		Map <Category, List<Service>> serviceCategoriesMap = new HashMap <Category, List<Service>>();
+		Map <Category, List<Service>> serviceCategoriesMap = new TreeMap <Category, List<Service>>();
 		List<Category> list = categoryDAO.list(2);
 		
 		for(Category serviceCategory : list){
@@ -110,7 +109,7 @@ public class GlobalController {
 	@ModelAttribute("activeServiceCategoriesMap")
 	public Map getActiveServiceCategoriesMap(){
 		
-		Map <Category, List<Service>> activeServiceCategoriesMap = new HashMap <Category, List<Service>>();
+		Map <Category, List<Service>> activeServiceCategoriesMap = new TreeMap <Category, List<Service>>();
 		List<Category> list = categoryDAO.listActiveCategories(2);
 		
 		for(Category activeServiceCategory : list){

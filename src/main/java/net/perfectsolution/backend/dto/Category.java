@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Category {
+public class Category implements Comparable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -62,6 +62,19 @@ public class Category {
 	
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	@Override
+	public int compareTo(Object obj) {
+		if (obj instanceof Category){
+			if (this.getId() > ((Category)obj).getId()){
+				return 1;
+			}else{
+				return -1;
+			}
+		}else{
+			return -1;
+		}
 	}
 	
 }

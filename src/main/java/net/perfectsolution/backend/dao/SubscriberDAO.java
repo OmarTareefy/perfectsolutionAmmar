@@ -11,5 +11,6 @@ public interface SubscriberDAO {
 	
 	List<Subscriber> list();
 	List<Subscriber> listActiveSubscribers();
+	String getSubscribersAsCSV();
 
 }
