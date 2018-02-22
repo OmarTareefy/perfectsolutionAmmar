@@ -14,7 +14,7 @@ public class Utilities {
 	
 	public static boolean sendFromGMail(String from, String pass, String to, String subject, String htmlBody) {
 		Properties props = System.getProperties();
-		String host = "smtp.gmail.com";
+		String host = "mail.kqual.com";
 		buildSmtpProps(props, from, pass, host);
 		Session session = Session.getDefaultInstance(props);
 		MimeMessage message = new MimeMessage(session);
@@ -47,7 +47,7 @@ public class Utilities {
 		props.put("mail.smtp.host", host);
 		props.put("mail.smtp.user", from);
 		props.put("mail.smtp.password", pass);
-		props.put("mail.smtp.port", "587");
+		props.put("mail.smtp.port", "25");
 		props.put("mail.smtp.auth", "true");
 	}
 	
