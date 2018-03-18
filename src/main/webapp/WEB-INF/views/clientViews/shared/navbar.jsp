@@ -31,7 +31,7 @@
 
 			<!-- Logo -->
 			<a class="logo float-left" href="${contextRoot}/home"> <img
-				src="${res}/myImages/shared/CompanyLogo1.png" alt="" />
+				src="${res}/myImages/shared/Company_logo1_latest.png" alt="" />
 			</a>
 
 			<!-- 
@@ -44,7 +44,7 @@
 				<nav class="nav-main">
 					<ul id="topMain" class="nav nav-pills nav-main">
 
-
+<!-- 
 						<li><c:choose>
 								<c:when test="${locale == 'en'}">
 									<a href="${currentLocation}?language=ar"> <img
@@ -56,7 +56,7 @@
 										src="${res}/myImages/shared/en.png" class="lang-icon" salt="" /></a>
 								</c:otherwise>
 							</c:choose></li>
-
+ -->
 						<li><a href="${contextRoot}/home"> <spring:message
 									code="home" />
 						</a></li>
@@ -137,7 +137,7 @@
 
 
 
-
+<!-- 
 						<li class="dropdown"><a class="dropdown-toggle" href="#"><spring:message
 									code="clients" /></a>
 							<ul class="dropdown-menu">
@@ -156,7 +156,7 @@
 									</a></li>
 								</c:forEach>
 							</ul></li>
-
+ -->
 
 						<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact" />
@@ -165,14 +165,19 @@
 									code="about" />
 						</a></li>
 
-						
+						<!--
+							<li><a href="${contextRoot}/manage/home"> <spring:message
+										code="manage"
+									/>
+							</a></li>
+						-->						 	
 						<security:authorize access="hasAuthority('ADMIN')">
 							<li><a href="${contextRoot}/manage/home"> <spring:message
 										code="manage"
 									/>
 							</a></li>
 						</security:authorize>
-
+ 
 						<!-- 
 										MENU ANIMATIONS
 											.nav-animate-fadeIn

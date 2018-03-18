@@ -7,7 +7,7 @@
 
 	<!-- Logo -->
 	<a class="logo pull-left" href="${contextRoot}/home"> <img
-		src="${res}/myImages/CompanyLogo1.png" alt="admin panel" height="35" />
+		src="${res}/myImages/Company_logo1.jpg" alt="admin panel" height="35" />
 	</a>
 	<nav>
 
