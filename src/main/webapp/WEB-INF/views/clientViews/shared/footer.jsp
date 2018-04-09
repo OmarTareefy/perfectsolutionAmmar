@@ -62,9 +62,10 @@
 						code="products" /></a></li>
 					<li><a href="${contextRoot}/service/1"><spring:message
 									code="services" /></a></li>
+					<!-- 
 					<li><a href="${contextRoot}/client/1"><spring:message
 									code="clients" /></a></li>
-					
+					 -->
 					<li><a href="${contextRoot}/contact"> <spring:message
 									code="contact" />
 						</a></li>
